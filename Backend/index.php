@@ -75,7 +75,30 @@
 				</div>
 				
 				<div class="panel panel-default">
-				 <div class="panel-heading">Reservations  <span class="badge">1</span></div>
+				 <div class="panel-heading">Reservations  <span class="badge">
+				 <?php
+						$servername = "localhost";
+						$dbusername = "root";
+						$dbpassword = "";
+						$db = "royaldb";
+						try {
+							$conn = new PDO("mysql:host=$servername;dbname=$db", $dbusername, $dbpassword);
+							// set the PDO error mode to exception
+							$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+							$sql = "SELECT * FROM applicant";
+							$res = $conn->query($sql);
+							$count = $res->rowCount();
+							
+							if ($res->rowcount() >= 1){
+								echo "$count";
+							}else{
+								echo "0";
+							}
+						}catch(PDOException $ed){
+							echo "Connection failed: " . $ed->getMessage();
+						}
+				?>
+				 </span></div>
 				 <table class="table">
 				 <tr>
 					 <th>No.</th>
@@ -83,8 +106,7 @@
 					 <th>Name</th>
 					 <th>Payment</th>
 					 <th>Confirm Payment</th>
-					 <th>Status</th>
-					 <th>Accept as Tenant</th>
+					 <th>Void Reservation Payment</th>
 				 </tr>
 					<?php
 						$servername = "localhost";
@@ -99,7 +121,6 @@
 							$sql = "SELECT * FROM applicant";
 							$res = $conn->query($sql);
 							$counter = 1;
-							
 							if($res->rowcount() < 1) {
 								
 								echo "</table>";
@@ -113,9 +134,13 @@
 									echo "<td>".$rowSub['dateReserved']."</td>";
 									echo "<td>".$rowSub['firstName'].' '.$rowSub['lastName']."</td>";
 									echo "<td>".$rowSub['status']."</td>";
-									echo "<td><a href=\"addSubject.php?name=".$rowSub['classCode']."&action=remove\">REMOVE</a></th>";
-									echo "<td>".$rowSub['status']."</td>";
-									echo "<td><a href=\"addSubject.php?name=".$rowSub['classCode']."&action=remove\">REMOVE</a></th>";
+									if($rowSub['status'] == "Paid"){
+										echo "<td><a href=\"confirmReservation.php?reservationID=".$rowSub['reservationID']."&action=Confirm\">Confirm</a></th>";
+										echo "<td><a href=\"voidReservation.php?reservationID=".$rowSub['reservationID']."&action=Void\">Void</a></th>";
+									}else{
+										echo "<td><a href=\"confirmReservation.php?reservationID=".$rowSub['reservationID']."&action=Confirm\">Confirm</a></th>";
+										echo "<td> </td>";
+									}
 									echo "</tr>";
 									
 								}
@@ -124,13 +149,6 @@
 							echo "Connection failed: " . $e->getMessage();
 						}
 					?>
-				 <tr>
-					 <td>1</td>
-					 <td>2/5/2016</td>
-					 <td>Izaya Orihara</td>
-					 <td>Pending</td>
-					 <td>Pending</td>
-				 </tr>
 				 </table>
 				</div>
 				
