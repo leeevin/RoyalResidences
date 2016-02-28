@@ -1,186 +1,243 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
+
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="../../favicon.ico">
-		<title> Royal Residence - Admin</title>
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-	 <link href="css/simple-sidebar.css" rel="stylesheet">
-    <link href="navbar-fixed-top.css" rel="stylesheet">
-    <script src="../../assets/js/ie-emulation-modes-warning.js"></script>
-  </head>
 
-  <body>
-    <!-- Fixed navbar -->
-    <nav class="navbar navbar-default navbar-fixed-top">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="index.php">Royal Residence - Admin</a>
+    <title>Royal Residence - Admin</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="css/modern-business.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="index.php">Royal Residence</a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                                <li class="dropdown active" >
+									  <a href="index.php" class="dropdown-toggle" data-toggle="dropdown">Home</a>
+										<ul class="dropdown-menu">											
+											<li><a href="index.php">Dashboard</a></li>
+											<li><a href="vanotif.php">View all Notifications</a></li>
+											<li><a href="vareserve.php">View all Reservations</a></li>
+											<li><a href="vapay.php">View all Payment Details</a></li>                
+										</ul>
+								</li>	
+								<li><a href="registration.php">Registration</a></li>
+								<li><a href="managerooms.php">Manage Rooms</a></li>
+								<li><a href="accounts.php">Accounts</a></li>
+								<li><a href="bills.php">Bills</a></li>
+								<li><a href="reports.php">Reports</a></li>
+								<li> <a href="#"><i class="fa fa-sign-out fa-fw"></i> Logout</a></li>
+				 </ul>
+                    
         </div>
-        <div id="navbar" class="navbar-collapse collapse">
-          <ul class="nav navbar-nav">
-            <li class="active"><a href="index.php">Home</a></li>
-            <li><a href="registration.php">Registration</a></li>
-            <li><a href="manageRooms.php">Manage Rooms</a></li>
-            <li><a href="accounts.php">Accounts</a></li>
-            <li><a href="bills.php">Bills</a></li>
-			<li><a href="reports.php">Reports</a></li>
-          </ul>
-         
-        </div><!--/.nav-collapse -->
-      </div>
+        <!-- /.container -->
     </nav>
 
-	
-	
-    <div class="container">
-        <!-- Page Content -->
-        <div id="page-content-wrapper">
+   
+
+    <!-- Page Content -->
+    <div class="container">		
 	<h2>Dashboard</h2>
 	<hr>
+			<div class="col-lg-5">                       
+			<div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h3 class="panel-title"><i class="fa fa-clock-o fa-fw"></i> Notifications  <span class="badge">2</span></h3>
+                            </div>
+                            <div class="panel-body">
+                                <div class="list-group">
+                                    <table class="table table-bordered table-hover">
+									 <tr>
+										<th>Date <a href="#"><span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span></a></th>
+										<th>Name <a href="#"><span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span></a></th>
+										<th>Details <a href="#"><span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span></a></th>										
+										<th></th>
+									</tr>				 
+									<tr>
+										<td>2/5/2016</td>
+										<td><a href="accounts.php">Yra Bacalanmo</a></td>
+										<td>End of Contract</td>
+										<td><a href="#"><span class="glyphicon glyphicon-ok-circle"" data-toggle="popover" data-trigger="hover" data-content="Archive" data-placement="top" data-original-title="" title="" aria-hidden="true"></span></a></td>
+									</tr>				 
+									<tr>
+										<td>2/3/2016</td>
+										<td><a href="">Jann Marie Flores</a></td>
+										<td></td>
+										<td><a href="#"><span class="glyphicon glyphicon-ok-circle" data-toggle="popover" data-trigger="hover" data-content="Archive" data-placement="top" data-original-title="" title="" aria-hidden="true"></span></a></td>
+									</tr>				  	
+								 </table>
+                                </div>
+                                <div class="text-right">
+                                    <a href="vanotif.php">View All Notifications <i class="fa fa-arrow-circle-right"></i></a>
+                                </div>
+                            </div>
+            </div>
+			</div>
 			
-				<div class="panel panel-default">
+			<div class="col-lg-7">
+			<div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h3 class="panel-title"><i class="fa fa-clock-o fa-fw"></i> Reservations  <span class="badge">1</span></h3>
+                            </div>
+                            <div class="panel-body">
+                                <div class="list-group">
+                                    <table class="table table-bordered table-hover">
+									 <tr>
+										<th>Date <a href="#"><span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span></a></th>
+										<th>Name <a href="#"><span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span></a></th>
+										<th>Move-in date <a href="#"><span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span></a></th>
+										<th>Payment</th>
+										<th>Status</th>
+										<th></th>
+									</tr>
+									<?php
+										$servername = "localhost";
+										$dbusername = "root";
+										$dbpassword = "";
+										$db = "royaldb";
+										
+										try {
+											$conn = new PDO("mysql:host=$servername;dbname=$db", $dbusername, $dbpassword);
+											// set the PDO error mode to exception
+											$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+											$sql = "SELECT * FROM reservation";
+											$res = $conn->query($sql);
+											$counter = 1;
+											if($res->rowcount() < 1) {
+												
+												echo "</table>";
+												echo "<h4>No Applicants so Far :3</h4>";
+												
+											} else {
+												while($rowSub = $res->fetch(PDO::FETCH_LAZY)){
+													
+													echo "<tr>";
+													echo "<td>".$rowSub['dateReserved']."</td>";
+													echo "<td>".$rowSub['firstName'].' '.$rowSub['lastName']."</td>";
+													echo "<td>".$rowSub['expectedMoveInDate']."</td>";
+													echo "<td>".$rowSub['status']."</td>";
+													/*if($rowSub['status'] == "Reservee"){
+														echo "<td> </td>";
+														echo "<td><a href=\"voidReservation.php?reservationID=".$rowSub['reservationID']."&action=Void\">Void</a></th>";
+													}else{
+														echo "<td><a href=\"confirmReservation.php?reservationID=".$rowSub['reservationID']."&action=Confirm\">Confirm</a></th>";
+														echo "<td> </td>";
+													}*/
+													echo "</tr>";
+													
+												}
+											}
+										}catch(PDOException $e){
+											echo "Connection failed: " . $e->getMessage();
+										}
+									?>
+								 </table>
+                                </div>
+                                <div class="text-right">
+                                    <a href="vareserve.php">View All Reservations <i class="fa fa-arrow-circle-right"></i></a>
+                                </div>
+                            </div>
+             </div>	
 				
-				 <div class="panel-heading">Notifications  <span class="badge">2</span></div>
-				 <table class="table">
-				 <tr>
-					 <th>No.</th>
-					 <th>Date</th>
-					 <th>Name</th>
-					 <th>Status</th>
-				 </tr>
-				 <tr>
-					 <td>1</td>
-					 <td>2/5/2016</td>
-					 <td>Yra Bacalanmo</td>
-					 <td>End of Contract</td>
-				 </tr>
-				 <tr>
-					 <td>2</td>
-					 <td>2/3/2016</td>
-					 <td>Jann Marie Flores</td>
-					 <td>Move out</td>
-				 </tr>
-				 </table>
-				</div>
 				
-				<div class="panel panel-default">
-				 <div class="panel-heading">Reservations  <span class="badge">
-				 <?php
-						$servername = "localhost";
-						$dbusername = "root";
-						$dbpassword = "";
-						$db = "royaldb";
-						try {
-							$conn = new PDO("mysql:host=$servername;dbname=$db", $dbusername, $dbpassword);
-							// set the PDO error mode to exception
-							$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-							$sql = "SELECT * FROM applicant";
-							$res = $conn->query($sql);
-							$count = $res->rowCount();
-							
-							if ($res->rowcount() >= 1){
-								echo "$count";
-							}else{
-								echo "0";
-							}
-						}catch(PDOException $ed){
-							echo "Connection failed: " . $ed->getMessage();
-						}
-				?>
-				 </span></div>
-				 <table class="table">
-				 <tr>
-					 <th>No.</th>
-					 <th>Date</th>
-					 <th>Name</th>
-					 <th>Payment</th>
-					 <th>Confirm Payment</th>
-					 <th>Void Reservation Payment</th>
-				 </tr>
-					<?php
-						$servername = "localhost";
-						$dbusername = "root";
-						$dbpassword = "";
-						$db = "royaldb";
-						
-						try {
-							$conn = new PDO("mysql:host=$servername;dbname=$db", $dbusername, $dbpassword);
-							// set the PDO error mode to exception
-							$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-							$sql = "SELECT * FROM applicant";
-							$res = $conn->query($sql);
-							$counter = 1;
-							if($res->rowcount() < 1) {
-								
-								echo "</table>";
-								echo "<h4>No Applicants so Far :3</h4>";
-								
-							} else {
-								while($rowSub = $res->fetch(PDO::FETCH_LAZY)){
-									
-									echo "<tr>";
-									echo "<td>".$rowSub['reservationID']."</td>";
-									echo "<td>".$rowSub['dateReserved']."</td>";
-									echo "<td>".$rowSub['firstName'].' '.$rowSub['lastName']."</td>";
-									echo "<td>".$rowSub['status']."</td>";
-									if($rowSub['status'] == "Paid"){
-										echo "<td><a href=\"confirmReservation.php?reservationID=".$rowSub['reservationID']."&action=Confirm\">Confirm</a></th>";
-										echo "<td><a href=\"voidReservation.php?reservationID=".$rowSub['reservationID']."&action=Void\">Void</a></th>";
-									}else{
-										echo "<td><a href=\"confirmReservation.php?reservationID=".$rowSub['reservationID']."&action=Confirm\">Confirm</a></th>";
-										echo "<td> </td>";
-									}
-									echo "</tr>";
-									
-								}
-							}
-						}catch(PDOException $e){
-							echo "Connection failed: " . $e->getMessage();
-						}
-					?>
-				 </table>
-				</div>
+			<div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h3 class="panel-title"><i class="fa fa-clock-o fa-fw"></i> Payments  <span class="badge">0</span></h3>
+                            </div>
+                            <div class="panel-body">
+                                <div class="list-group">
+                                    <table class="table table-bordered table-hover">
+										<tr>
+											<th>Date <a href="#"><span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span><th>
+											<th>Name <a href="#"><span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span></th>
+											<th>Details</th>
+											<th>Total Bill</th>
+										 </tr>
+										 <tr>
+											<td>2/29/2016</td>
+											<td><a href="#">Yna Jalin</a></td>
+											<td>Overudue Payment</td>
+											<td>P10,000.00</td>
+											<td><a href="#"><span class="glyphicon glyphicon-envelope" data-toggle="popover" data-trigger="hover" data-content="Notify Tenant" data-placement="top" data-original-title="" title="" aria-hidden="true"></span></a></td>
+										 </tr>
+									 
+									 </table>
+                                </div>
+                                <div class="text-right">
+                                    <a href="vapay.php">View All Payment Details <i class="fa fa-arrow-circle-right"></i></a>
+                                </div>
+                            </div>
+             </div>	
+			</div>	
 				
-				<div class="panel panel-default">
-				 <div class="panel-heading">Payments</div>
-				 <table class="table">
-				 <tr><td></td></tr>
-				 
-				 </table>
-				</div>
-			
-	
-	<hr>
-	</div>
-
-			
-        </div>
-        <!-- /#page-content-wrapper -->
     </div>
-    <!-- /#wrapper -->
-	
-	
-	
-	
-	
     
-    </div> <!-- /container -->
-	<!-- \(^o^)/ -->
+       
+	   
+	   
+	   
+	   
+	   
+	   
+	   
+            
+        
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <script src="../../dist/js/bootstrap.min.js"></script>
-    
-    <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
-  </body>
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+	<!-- Dropdown -->
+    <script>
+	$('ul.nav li.dropdown').hover(function() {
+	  $(this).find('.dropdown-menu').stop(true, true).delay(200).fadeIn(500);
+	}, function() {
+	  $(this).find('.dropdown-menu').stop(true, true).delay(200).fadeOut(500);
+	});
+	</script>
+	<!-- Hover popover -->
+    <script>
+    $(document).ready(function(){
+        $('[data-toggle="popover"]').popover();   
+    });
+    </script>
+
+</body>
+
 </html>

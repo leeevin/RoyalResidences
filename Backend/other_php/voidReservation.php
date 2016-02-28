@@ -5,7 +5,6 @@
 	$db = "royaldb";
 
 	$reservationCode = $_GET['reservationCode'];
-	$site = $_GET['site'];
 	
 	$action = $_GET['action'];
 	try {
@@ -18,14 +17,14 @@
 				$sqlCheck = $conn->query($sqlCheck);
 
 				if($sqlCheck->rowCount() == 1) {
-					$sqlUpdate = "UPDATE reservation SET status='Reserved' WHERE reservationCode = '$reservationCode'";
+					$sqlUpdate = "UPDATE reservation SET status='Pending' WHERE reservationCode = '$reservationCode'";
 					$conn->query($sqlUpdate);
 						
 				} else {
-					echo "Error Confirming";
+					echo "Error Voiding";
 				}
 			
 	}catch(PDOException $e){
 				echo "Connection failed: " . $e->getMessage();
-	}	
-	header("Location:/backRoyal/$site"); 
+	}
+?>

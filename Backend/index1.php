@@ -36,48 +36,44 @@
         <div class="container">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
+                
                 <a class="navbar-brand" href="index.php">Royal Residence</a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav navbar-right">
-                                <li class="dropdown" >
-									  <a href="index.php" class="dropdown-toggle" data-toggle="dropdown">Home</a>
-										<ul class="dropdown-menu">
-											<li><a href="index.php">Dashboard</a></li>
-											<li><a href="vanotif.php">View all Notifications</a></li>
-											<li><a href="vareserve.php">View all Reservations</a></li>
-											<li><a href="vapay.php">View all Payment Details</a></li>           
-										</ul>
-								</li>	
-								<li><a href="registration.php">Registration</a></li>
-								<li class="active"><a href="managerooms.php">Manage Rooms</a></li>
-								<li><a href="accounts.php">Accounts</a></li>
-								<li><a href="bills.php">Bills</a></li>
-								<li><a href="reports.php">Reports</a></li>
-								<li> <a href="#"><i class="fa fa-sign-out fa-fw"></i> Logout</a></li>
-				 </ul>
-                    
-        </div>
+            
         <!-- /.container -->
     </nav>
 
    
 
     <!-- Page Content -->
-    <div class="container">		
-	<h2>Manage Rooms</h2>
-	<hr>
-			
-	<hr>					
-    </div>
-    
+    <div class="container">
+						 <div class="signin">
+										<div class="panel panel-default">
+											<div class="panel-heading">
+											  <h2 class="form-signin-heading">Please sign in</h2>
+											</div>
+											<div class="panel-body">
+												
+												 <form class="form-signin">        
+													<label for="inputEmail" class="sr-only">Email address</label>
+													<input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+													<br>
+													<label for="inputPassword" class="sr-only">Password</label>
+													<input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+													<div class="checkbox">
+													  <label>
+														<input type="checkbox" value="remember-me"> Remember me
+													  </label>
+													</div>
+													<button class="btn btn-lg btn-info btn-block" type="submit">Sign in</button>
+												  </form>
+												
+												
+											</div>                       
+										</div>
+				</div>
+      
        
 	   
 	   
@@ -92,15 +88,6 @@
     <!-- jQuery -->
     <script src="js/jquery.js"></script>
 
-	<!-- Drop Down-->
-	<script>
-	$('ul.nav li.dropdown').hover(function() {
-	  $(this).find('.dropdown-menu').stop(true, true).delay(200).fadeIn(500);
-	}, function() {
-	  $(this).find('.dropdown-menu').stop(true, true).delay(200).fadeOut(500);
-	});
-	</script>
-	
     <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js"></script>
 

@@ -5,7 +5,7 @@
 	$dbpassword = "";
 	$db = "royaldb";
 
-	$reservationID = $_GET['reservationID'];
+	$reservationCode = $_GET['reservationCode'];
 	
 	$action = $_GET['action'];
 	try {
@@ -14,11 +14,11 @@
 				// set the PDO error mode to exception
 				$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 					
-				$sqlCheck = "SELECT reservationID FROM applicant WHERE reservationID = $reservationID";
+				$sqlCheck = "SELECT reservationCode FROM reservation WHERE reservationCode = $reservationCode";
 				$sqlCheck = $conn->query($sqlCheck);
 
 				if($sqlCheck->rowCount() == 1) {
-					$sqlUpdate = "UPDATE applicant SET status='Pending' WHERE reservationID = '$reservationID'";
+					$sqlUpdate = "UPDATE reservation SET status='Pending' WHERE reservationCode = '$reservationCode'";
 					$conn->query($sqlUpdate);
 						
 				} else {
@@ -27,6 +27,5 @@
 			
 	}catch(PDOException $e){
 				echo "Connection failed: " . $e->getMessage();
-	}	
-	header("Location: \backend\index.php"); /* Redirect browser */
+	}
 ?>

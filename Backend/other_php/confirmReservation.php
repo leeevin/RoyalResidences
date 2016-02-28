@@ -5,7 +5,7 @@
 	$db = "royaldb";
 
 	$reservationCode = $_GET['reservationCode'];
-	$site = $_GET['site'];
+	$param = $_GET['param'];
 	
 	$action = $_GET['action'];
 	try {
@@ -28,4 +28,4 @@
 	}catch(PDOException $e){
 				echo "Connection failed: " . $e->getMessage();
 	}	
-	header("Location:/backRoyal/$site"); 
+	header("Location: \backRoyal\index.php?param=$param"); /* Redirect browser */
