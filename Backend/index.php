@@ -123,7 +123,6 @@
 										<th>Move-in date <a href="#"><span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span></a></th>
 										<th>Payment</th>
 										<th>Status</th>
-										<th></th>
 									</tr>
 									<?php
 										$servername = "localhost";
@@ -151,13 +150,7 @@
 													echo "<td>".$rowSub['firstName'].' '.$rowSub['lastName']."</td>";
 													echo "<td>".$rowSub['expectedMoveInDate']."</td>";
 													echo "<td>".$rowSub['status']."</td>";
-													/*if($rowSub['status'] == "Reservee"){
-														echo "<td> </td>";
-														echo "<td><a href=\"voidReservation.php?reservationID=".$rowSub['reservationID']."&action=Void\">Void</a></th>";
-													}else{
-														echo "<td><a href=\"confirmReservation.php?reservationID=".$rowSub['reservationID']."&action=Confirm\">Confirm</a></th>";
-														echo "<td> </td>";
-													}*/
+													echo "<td>".$rowSub['status']."</td>";
 													echo "</tr>";
 													
 												}

@@ -117,7 +117,7 @@
 													echo "<td>".$rowSub['expectedMoveInDate']."</td>";
 													echo "<td>".$rowSub['status']."</td>";
 													echo "<td>".$rowSub['status']."</td>"; //What Status?
-													echo "<td><button type='button' class='btn btn-success'><a href=\"\backRoyal\confirmReservation.php?reservationCode=".$rowSub['reservationCode']."&site="."sort.php?param=".$param."&action=Void\">Confirm</a></button><button type='button' class='btn btn-danger'><a href=\"\backRoyal\cancelReservation.php?reservationCode=".$rowSub['reservationCode']."&site="."sort.php?param=".$param."&action=Action\">Reject</a></button></td>";
+													echo "<td><button type='button' class='btn btn-success'><a href=\"\backRoyal\confirmReservation.php?reservationCode=".$rowSub['reservationCode']."&site=vareserve.php"."&action=Void\">Confirm</a></button><button type='button' class='btn btn-danger'><a href=\"\backRoyal\cancelReservation.php?reservationCode=".$rowSub['reservationCode']."&site=vareserve.php"."&action=Action\">Reject</a></button></td>";
 													echo "</tr>";
 												}
 											}
