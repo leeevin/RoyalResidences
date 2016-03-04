@@ -1,4 +1,5 @@
 <?php
+	session_start();
 	$servername = "localhost";
 	$dbusername = "root";
 	$dbpassword = "";
@@ -18,14 +19,16 @@
 				$sqlCheck = $conn->query($sqlCheck);
 
 				if($sqlCheck->rowCount() == 1) {
-					$sqlUpdate = "UPDATE reservation SET status='Reserved' WHERE reservationCode = '$reservationCode'";
+					$sqlUpdate = "INSERT INTO reservation_archive SELECT * FROM reservation WHERE reservationCode = '$reservationCode'; DELETE FROM reservation WHERE reservationCode = '$reservationCode'; UPDATE reservation_archive SET status='Archived' WHERE reservationCode = '$reservationCode';";
+					//
 					$conn->query($sqlUpdate);
 						
 				} else {
-					echo "Error Confirming";
+					echo "Error Voiding";
 				}
 			
 	}catch(PDOException $e){
 				echo "Connection failed: " . $e->getMessage();
-	}	
+	}
 	header("Location:/backRoyal/$site"); 
+?>

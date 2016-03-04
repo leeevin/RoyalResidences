@@ -46,16 +46,18 @@
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav navbar-right">
-                                <li class="dropdown active" >
+                
+				
+				<ul class="nav navbar-nav navbar-right">			
+								<li class="dropdown active" >
 									  <a href="index.php" class="dropdown-toggle" data-toggle="dropdown">Home</a>
-										<ul class="dropdown-menu">											
+										<ul class="dropdown-menu">
 											<li><a href="index.php">Dashboard</a></li>
 											<li><a href="vanotif.php">View all Notifications</a></li>
 											<li><a href="vareserve.php">View all Reservations</a></li>
 											<li><a href="vapay.php">View all Payment Details</a></li>                
 										</ul>
-								</li>	
+								</li>				
 								<li><a href="registration.php">Registration</a></li>
 								<li><a href="managerooms.php">Manage Rooms</a></li>
 								<li><a href="accounts.php">Accounts</a></li>
@@ -72,57 +74,21 @@
 
     <!-- Page Content -->
     <div class="container">		
-	<h2>Dashboard</h2>
+	<h2>Reservations</h2>
 	<hr>
-			<div class="col-lg-5">                       
 			<div class="panel panel-default">
                             <div class="panel-heading">
-                                <h3 class="panel-title"><i class="fa fa-clock-o fa-fw"></i> Notifications  <span class="badge">2</span></h3>
+                                <h3 class="panel-title"><i class="fa fa-clock-o fa-fw"></i> Reservations  </h3>
                             </div>
                             <div class="panel-body">
                                 <div class="list-group">
                                     <table class="table table-bordered table-hover">
-									 <tr>
-										<th>Date <a href="#"><span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span></a></th>
-										<th>Name <a href="#"><span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span></a></th>
-										<th>Details <a href="#"><span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span></a></th>										
-										<th></th>
-									</tr>				 
 									<tr>
-										<td>2/5/2016</td>
-										<td><a href="accounts.php">Yra Bacalanmo</a></td>
-										<td>End of Contract</td>
-										<td><a href="#"><span class="glyphicon glyphicon-ok-circle"" data-toggle="popover" data-trigger="hover" data-content="Archive" data-placement="top" data-original-title="" title="" aria-hidden="true"></span></a></td>
-									</tr>				 
-									<tr>
-										<td>2/3/2016</td>
-										<td><a href="">Jann Marie Flores</a></td>
-										<td></td>
-										<td><a href="#"><span class="glyphicon glyphicon-ok-circle" data-toggle="popover" data-trigger="hover" data-content="Archive" data-placement="top" data-original-title="" title="" aria-hidden="true"></span></a></td>
-									</tr>				  	
-								 </table>
-                                </div>
-                                <div class="text-right">
-                                    <a href="vanotif.php">View All Notifications <i class="fa fa-arrow-circle-right"></i></a>
-                                </div>
-                            </div>
-            </div>
-			</div>
-			
-			<div class="col-lg-7">
-			<div class="panel panel-default">
-                            <div class="panel-heading">
-                                <h3 class="panel-title"><i class="fa fa-clock-o fa-fw"></i> Reservations  <span class="badge">1</span></h3>
-                            </div>
-                            <div class="panel-body">
-                                <div class="list-group">
-                                    <table class="table table-bordered table-hover">
-									 <tr>
-										<th>Date <a href="#"><span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span></a></th>
-										<th>Name <a href="#"><span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span></a></th>
-										<th>Move-in date <a href="#"><span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span></a></th>
+										<th>Date <a href="/backRoyal/sort.php?param=dateReserved"><span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span></a></th>
+										<th>Name <a href="/backRoyal/sort.php?param=firstName"><span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span></a></th>
+										<th>Move-in date <a href="/backRoyal/sort.php?param=expectedMoveInDate"><span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span></a></th>
 										<th>Payment</th>
-										<th>Status</th>
+										<th>Status <a href="/backRoyal/sort.php?param=status"><span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span></a></th>
 									</tr>
 									<?php
 										$servername = "localhost";
@@ -150,9 +116,9 @@
 													echo "<td>".$rowSub['firstName'].' '.$rowSub['lastName']."</td>";
 													echo "<td>".$rowSub['expectedMoveInDate']."</td>";
 													echo "<td>".$rowSub['status']."</td>";
-													echo "<td>".$rowSub['status']."</td>";
+													echo "<td>".$rowSub['status']."</td>"; //What Status?
+													echo "<td><button type='button' class='btn btn-success'><a href=\"\backRoyal\confirmReservation.php?reservationCode=".$rowSub['reservationCode']."&site=vareserve.php"."&action=Void\">Confirm</a></button><button type='button' class='btn btn-danger'><a href=\"\backRoyal\cancelReservation.php?reservationCode=".$rowSub['reservationCode']."&site=vareserve.php"."&action=Action\">Reject</a></button></td>";
 													echo "</tr>";
-													
 												}
 											}
 										}catch(PDOException $e){
@@ -161,43 +127,10 @@
 									?>
 								 </table>
                                 </div>
-                                <div class="text-right">
-                                    <a href="vareserve.php">View All Reservations <i class="fa fa-arrow-circle-right"></i></a>
-                                </div>
+                               
                             </div>
              </div>	
-				
-				
-			<div class="panel panel-default">
-                            <div class="panel-heading">
-                                <h3 class="panel-title"><i class="fa fa-clock-o fa-fw"></i> Payments  <span class="badge">0</span></h3>
-                            </div>
-                            <div class="panel-body">
-                                <div class="list-group">
-                                    <table class="table table-bordered table-hover">
-										<tr>
-											<th>Date <a href="#"><span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span><th>
-											<th>Name <a href="#"><span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span></th>
-											<th>Details</th>
-											<th>Total Bill</th>
-										 </tr>
-										 <tr>
-											<td>2/29/2016</td>
-											<td><a href="#">Yna Jalin</a></td>
-											<td>Overudue Payment</td>
-											<td>P10,000.00</td>
-											<td><a href="#"><span class="glyphicon glyphicon-envelope" data-toggle="popover" data-trigger="hover" data-content="Notify Tenant" data-placement="top" data-original-title="" title="" aria-hidden="true"></span></a></td>
-										 </tr>
-									 
-									 </table>
-                                </div>
-                                <div class="text-right">
-                                    <a href="vapay.php">View All Payment Details <i class="fa fa-arrow-circle-right"></i></a>
-                                </div>
-                            </div>
-             </div>	
-			</div>	
-				
+	<hr>					
     </div>
     
        
@@ -216,21 +149,23 @@
 
     <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js"></script>
-	<!-- Dropdown -->
-    <script>
-	$('ul.nav li.dropdown').hover(function() {
-	  $(this).find('.dropdown-menu').stop(true, true).delay(200).fadeIn(500);
-	}, function() {
-	  $(this).find('.dropdown-menu').stop(true, true).delay(200).fadeOut(500);
-	});
-	</script>
+	
 	<!-- Hover popover -->
     <script>
     $(document).ready(function(){
         $('[data-toggle="popover"]').popover();   
     });
     </script>
-
+	
+	<!--Dropdown-->
+	<script>
+	$('ul.nav li.dropdown').hover(function() {
+	  $(this).find('.dropdown-menu').stop(true, true).delay(200).fadeIn(500);
+	}, function() {
+	  $(this).find('.dropdown-menu').stop(true, true).delay(200).fadeOut(500);
+	});
+	</script>
+	
 </body>
 
 </html>

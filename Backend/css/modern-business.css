@@ -1,0 +1,218 @@
+/*!
+ * Start Bootstrap - Modern Business HTML Template (http://startbootstrap.com)
+ * Code licensed under the Apache License v2.0.
+ * For details, see http://www.apache.org/licenses/LICENSE-2.0.
+ */
+
+/* Global Styles */
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    padding-top: 50px; /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
+}
+
+.img-portfolio {
+    margin-bottom: 30px;
+}
+
+.img-hover:hover {
+    opacity: 0.8;
+}
+
+/* Home Page Carousel */
+
+header.carousel {
+    height: 470px;
+}
+
+header.carousel .item,
+header.carousel .item.active,
+header.carousel .carousel-inner {
+    height: 100%;
+}
+
+header.carousel .fill {
+    width: 100%;
+    height: 100%;
+    background-position: center;
+    background-size: cover;
+}
+
+/* 404 Page Styles */
+
+.error-404 {
+    font-size: 100px;
+}
+
+/* Pricing Page Styles */
+
+.price {
+    display: block;
+    font-size: 50px;
+    line-height: 50px;
+}
+
+.price sup {
+    top: -20px;
+    left: 2px;
+    font-size: 20px;
+}
+
+.period {
+    display: block;
+    font-style: italic;
+}
+
+/* Footer Styles */
+
+footer {
+    margin: 40px 0;
+}
+
+/* Responsive Styles */
+
+@media(max-width:991px) {
+    .customer-img,
+    .img-related {
+        margin-bottom: 30px;
+    }
+}
+
+@media(max-width:767px) {
+    .img-portfolio {
+        margin-bottom: 15px;
+    }
+
+    header.carousel .carousel {
+        height: 70%;
+    }
+}
+
+/* GLYPHICON */
+
+.glyphicon.glyphicon-question-sign {
+}
+
+/* navbar custom */
+
+.navbar {
+    margin-bottom: 0;
+    background-color: rgba(27, 127, 145, 0.96);
+    z-index: 9999;
+    border: 0;
+    font-size: 14px !important;
+    line-height: 1.42857143 !important;
+    letter-spacing: 4px;
+    border-radius: 0;
+}
+
+.navbar li a, .navbar .navbar-brand {
+    color: #ffffff !important;
+}
+
+.navbar-nav li a:hover, .navbar-nav li.active a {
+    color: #ffffff !important;
+    background-color: rgb(25, 119, 136) !important;
+}
+
+.navbar-default .navbar-toggle {
+    border-color: transparent;
+    color: #fff !important;
+}
+
+/* carousel custom */
+
+.carousel-control.right, .carousel-control.left {
+    background-image: none;
+    color: rgba(0, 0, 0, 0.96);
+}
+
+.carousel-indicators li {
+    border-color: rgb(25, 119, 136);
+}
+
+.carousel-indicators li.active {
+    background-color: rgba(27, 127, 145, 0.96);
+}
+
+.item h4 {
+    font-size: 19px;
+    line-height: 1.375em;
+    font-weight: 400;
+    margin: 10px 0;
+    color: black;
+}
+
+.item span {
+    font-style: normal;
+}
+
+
+
+
+
+
+
+ /* css codes from Yra*/
+ 
+.marg{padding-left:20px;}
+
+img#tenant{height:200px;width:200px; margin-top:10px;border:solid;border-color:gray;border-width:1px; border-radius:2px;}
+
+div.signin{width:450px;min-height:20%;margin: 0 auto;text-align: left;margin-top:8%; }
+
+.indent{padding-left:45px;}
+.indent1{padding-left:90px;}
+
+ .top{margin-top:10px;}
+ 
+ 
+ 
+ .ptitle{text-decoration: bold;
+	font-size: 17px;
+	margin-left:20px;
+	margin-top:7px;
+ }
+ 
+ .pmargL{margin-left:20px;
+		 margin-top:7px;
+		 }
+ 
+ #page-content-wrapper {
+    width: 100%;
+    position: absolute;
+    margin-top: 5%;
+}
+.subtitle {
+	font-size: 19px;
+	text-decoration: bold;
+	background-color: #f5f5f5;
+	padding: 2px 0 2px 7px;
+	border-radius:2px;
+	
+}
+
+.margup{margin-top:3px;}
+
+.message {
+	background-color: #cccccc;
+	padding: 20px 20px 20px 20px;
+	font-size: 20px;
+	}
+ .inner_message {
+	background-color: #ddeeff;
+	padding: 3px 3px 3px 3px;
+}
+.login_area #command {
+	font-size: 20px;
+	text-align: center;
+	padding: 10px 10px 10px 10px;
+	margin-bottom: 20px;
+}
+
+
+

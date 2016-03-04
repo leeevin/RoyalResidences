@@ -46,18 +46,20 @@
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav navbar-right">
-                                <li class="dropdown" >
+                
+				
+				<ul class="nav navbar-nav navbar-right">			
+								<li class="dropdown active" >
 									  <a href="index.php" class="dropdown-toggle" data-toggle="dropdown">Home</a>
 										<ul class="dropdown-menu">
 											<li><a href="index.php">Dashboard</a></li>
 											<li><a href="vanotif.php">View all Notifications</a></li>
 											<li><a href="vareserve.php">View all Reservations</a></li>
-											<li><a href="vapay.php">View all Payment Details</a></li>           
+											<li><a href="vapay.php">View all Payment Details</a></li>               
 										</ul>
-								</li>	
+								</li>				
 								<li><a href="registration.php">Registration</a></li>
-								<li class="active"><a href="managerooms.php">Manage Rooms</a></li>
+								<li><a href="managerooms.php">Manage Rooms</a></li>
 								<li><a href="accounts.php">Accounts</a></li>
 								<li><a href="bills.php">Bills</a></li>
 								<li><a href="reports.php">Reports</a></li>
@@ -72,9 +74,38 @@
 
     <!-- Page Content -->
     <div class="container">		
-	<h2>Manage Rooms</h2>
+	<h2>Notifications</h2>
 	<hr>
-			
+			<div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h3 class="panel-title"><i class="fa fa-clock-o fa-fw"></i> Notifications </h3>
+                            </div>
+                            <div class="panel-body">
+                                <div class="list-group">
+                                    <table class="table table-bordered table-hover">
+									 <tr>
+										<th>Date <a href="#"><span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span></a></th>
+										<th>Name <a href="#"><span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span></a></th>
+										<th>Details <a href="#"><span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span></a></th>										
+										<th></th>
+									</tr>				 
+									<tr>
+										<td>2/5/2016</td>
+										<td><a href="accounts.php">Yra Bacalanmo</a></td>
+										<td>End of Contract</td>
+										<td><a href="#"><span class="glyphicon glyphicon-ok-circle"" data-toggle="popover" data-trigger="hover" data-content="Archive" data-placement="top" data-original-title="" title="" aria-hidden="true"></span></a></td>
+									</tr>				 
+									<tr>
+										<td>2/3/2016</td>
+										<td><a href="">Jann Marie Flores</a></td>
+										<td></td>
+										<td><a href="#"><span class="glyphicon glyphicon-ok-circle" data-toggle="popover" data-trigger="hover" data-content="Archive" data-placement="top" data-original-title="" title="" aria-hidden="true"></span></a></td>
+									</tr>				  	
+								 </table>
+                                </div>
+                               
+                            </div>
+            </div>
 	<hr>					
     </div>
     
@@ -92,7 +123,17 @@
     <!-- jQuery -->
     <script src="js/jquery.js"></script>
 
-	<!-- Drop Down-->
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+	
+	<!-- Hover popover -->
+    <script>
+    $(document).ready(function(){
+        $('[data-toggle="popover"]').popover();   
+    });
+    </script>
+	
+	<!--Dropdown-->
 	<script>
 	$('ul.nav li.dropdown').hover(function() {
 	  $(this).find('.dropdown-menu').stop(true, true).delay(200).fadeIn(500);
@@ -101,9 +142,6 @@
 	});
 	</script>
 	
-    <!-- Bootstrap Core JavaScript -->
-    <script src="js/bootstrap.min.js"></script>
-
 </body>
 
 </html>

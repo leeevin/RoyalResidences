@@ -1,0 +1,5 @@
+$future = strtotime('21 July 2012'); //Future date.
+$timefromdb = //source time
+$timeleft = $future-$timefromdb;
+$daysleft = round((($timeleft/24)/60)/60); 
+echo $daysleft;
