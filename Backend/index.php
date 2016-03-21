@@ -56,6 +56,7 @@
 											<li><a href="vapay.php">View all Payment Details</a></li>                
 										</ul>
 								</li>	
+								<li><a href="editsite.php">Edit</a></li>
 								<li><a href="registration.php">Registration</a></li>
 								<li><a href="managerooms.php">Manage Rooms</a></li>
 								<li><a href="accounts.php">Accounts</a></li>
@@ -77,7 +78,28 @@
 			<div class="col-lg-5">                       
 			<div class="panel panel-default">
                             <div class="panel-heading">
-                                <h3 class="panel-title"><i class="fa fa-clock-o fa-fw"></i> Notifications  <span class="badge">2</span></h3>
+                                <h3 class="panel-title"><i class="fa fa-clock-o fa-fw"></i> Notifications  <span class="badge">
+								<?php
+										$servername = "localhost";
+										$dbusername = "root";
+										$dbpassword = "";
+										$db = "royaldb";
+										
+										try {
+											$conn = new PDO("mysql:host=$servername;dbname=$db", $dbusername, $dbpassword);
+											// set the PDO error mode to exception
+											$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+											$sql = "SELECT * FROM notification";
+											$res = $conn->query($sql);
+											$counter = $res->rowcount();
+											while($rowSub = $res->fetch(PDO::FETCH_LAZY)){
+												echo $rowSub['oldNotif'];
+											}
+										}catch(PDOException $e){
+											echo "Connection failed: " . $e->getMessage();
+										}
+									?>
+								</span></h3>
                             </div>
                             <div class="panel-body">
                                 <div class="list-group">
@@ -87,23 +109,11 @@
 										<th>Name <a href="#"><span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span></a></th>
 										<th>Details <a href="#"><span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span></a></th>										
 										<th></th>
-									</tr>				 
-									<tr>
-										<td>2/5/2016</td>
-										<td><a href="accounts.php">Yra Bacalanmo</a></td>
-										<td>End of Contract</td>
-										<td><a href="#"><span class="glyphicon glyphicon-ok-circle"" data-toggle="popover" data-trigger="hover" data-content="Archive" data-placement="top" data-original-title="" title="" aria-hidden="true"></span></a></td>
-									</tr>				 
-									<tr>
-										<td>2/3/2016</td>
-										<td><a href="">Jann Marie Flores</a></td>
-										<td></td>
-										<td><a href="#"><span class="glyphicon glyphicon-ok-circle" data-toggle="popover" data-trigger="hover" data-content="Archive" data-placement="top" data-original-title="" title="" aria-hidden="true"></span></a></td>
 									</tr>				  	
 								 </table>
                                 </div>
                                 <div class="text-right">
-                                    <a href="vanotif.php">View All Notifications <i class="fa fa-arrow-circle-right"></i></a>
+                                    <a href="vanotif.php" style="color:black">View All Notifications <i class="fa fa-arrow-circle-right" style="color:black"></i></a>
                                 </div>
                             </div>
             </div>
@@ -112,7 +122,37 @@
 			<div class="col-lg-7">
 			<div class="panel panel-default">
                             <div class="panel-heading">
-                                <h3 class="panel-title"><i class="fa fa-clock-o fa-fw"></i> Reservations  <span class="badge">1</span></h3>
+                                <h3 class="panel-title" ><i class="fa fa-clock-o fa-fw"></i> Reservations  <span class="badge">
+								
+								<?php
+										$servername = "localhost";
+										$dbusername = "root";
+										$dbpassword = "";
+										$db = "royaldb";
+										
+										try {
+											$conn = new PDO("mysql:host=$servername;dbname=$db", $dbusername, $dbpassword);
+											// set the PDO error mode to exception
+											$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+											$sql = "SELECT * FROM reservation";
+											$sql1 = "SELECT oldNotif FROM notification WHERE idNotif='1'";
+											$res = $conn->query($sql);
+											$res1 = $conn->query($sql1);
+											$counter = $res->rowcount();
+											while($rowSub = $res->fetch(PDO::FETCH_LAZY)){
+												$counter2 = $rowSub['oldNotif'];
+											}
+											$counter3 = $counter - $counter2;
+											if($rowSub['oldDate'] != date("Y-m-d")){
+												echo "$counter3";
+											}else{
+												echo "No New Notification";
+											}
+										}catch(PDOException $e){
+											echo "Connection failed: " . $e->getMessage();
+										}
+									?>
+								</span></h3>
                             </div>
                             <div class="panel-body">
                                 <div class="list-group">
@@ -162,7 +202,7 @@
 								 </table>
                                 </div>
                                 <div class="text-right">
-                                    <a href="vareserve.php">View All Reservations <i class="fa fa-arrow-circle-right"></i></a>
+                                    <a href="vareserve.php" style="color:black">View All Reservations <i class="fa fa-arrow-circle-right" style="color:black"></i></a>
                                 </div>
                             </div>
              </div>	
@@ -181,18 +221,11 @@
 											<th>Details</th>
 											<th>Total Bill</th>
 										 </tr>
-										 <tr>
-											<td>2/29/2016</td>
-											<td><a href="#">Yna Jalin</a></td>
-											<td>Overudue Payment</td>
-											<td>P10,000.00</td>
-											<td><a href="#"><span class="glyphicon glyphicon-envelope" data-toggle="popover" data-trigger="hover" data-content="Notify Tenant" data-placement="top" data-original-title="" title="" aria-hidden="true"></span></a></td>
-										 </tr>
 									 
 									 </table>
                                 </div>
                                 <div class="text-right">
-                                    <a href="vapay.php">View All Payment Details <i class="fa fa-arrow-circle-right"></i></a>
+                                    <a href="vapay.php" style="color:black">View All Payment Details <i class="fa fa-arrow-circle-right" style="color:black"></i></a>
                                 </div>
                             </div>
              </div>	

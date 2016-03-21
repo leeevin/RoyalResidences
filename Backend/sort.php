@@ -50,14 +50,15 @@
 				
 				<ul class="nav navbar-nav navbar-right">			
 								<li class="dropdown active" >
-									  <a href="index.php" class="dropdown-toggle" data-toggle="dropdown">Home</a>
-										<ul class="dropdown-menu">
-											<li><a href="index.php">Dashboard</a></li>
+									  <a href="home.php" class="dropdown-toggle" data-toggle="dropdown">Home</a>
+										<ul class="dropdown-menu">											
+											<li><a href="home.php">Dashboard</a></li>
 											<li><a href="vanotif.php">View all Notifications</a></li>
 											<li><a href="vareserve.php">View all Reservations</a></li>
 											<li><a href="vapay.php">View all Payment Details</a></li>                
 										</ul>
-								</li>				
+								</li>	
+								<li><a href="editsite.php">Edit</a></li>
 								<li><a href="registration.php">Registration</a></li>
 								<li><a href="managerooms.php">Manage Rooms</a></li>
 								<li><a href="accounts.php">Accounts</a></li>
@@ -107,10 +108,11 @@
                                 <table class="table table-bordered table-hover">
 								<tr>
 									<th>Date <a href="/backRoyal/sort.php?param=dateReserved"><span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span></a></th>
-									<th>Name <a href="/backRoyal/sort.php?param=firstName"><span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span></a></th>
-									<th>Move-in date <a href="/backRoyal/sort.php?param=expectedMoveInDate"><span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span></a></th>
-									<th>Payment</th>
-									<th>Status <a href="/backRoyal/sort.php?param=status"><span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span></a></th>
+										<th>Name <a href="/backRoyal/sort.php?param=firstName"><span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span></a></th>
+										<th>Move-in date <a href="/backRoyal/sort.php?param=expectedMoveInDate"><span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span></a></th>
+										<th>Status <a href="/backRoyal/sort.php?param=status"><span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span></a></th>
+										<th>Action</th>
+										<th>Deposit Slip</th>
 								</tr>
 								<?php
 									$servername = "localhost";
@@ -133,15 +135,20 @@
 											
 										} else {
 											while($rowSub = $res->fetch(PDO::FETCH_LAZY)){
-												
-												echo "<tr>";
-												echo "<td>".$rowSub['dateReserved']."</td>";
-												echo "<td>".$rowSub['firstName'].' '.$rowSub['lastName']."</td>";
-												echo "<td>".$rowSub['expectedMoveInDate']."</td>";
-												echo "<td>".$rowSub['status']."</td>";
-												echo "<td><button type='button' class='btn btn-success'><a href=\"\backRoyal\confirmReservation.php?reservationCode=".$rowSub['reservationCode']."&site="."sort.php?param=".$param."&action=Void\">Confirm</a></button><button type='button' class='btn btn-danger'><a href=\"\backRoyal\cancelReservation.php?reservationCode=".$rowSub['reservationCode']."&site="."sort.php?param=".$param."&action=Action\">Reject</a></button></td>";
-												echo "</tr>";
-											}
+													
+													echo "<tr>";
+													echo "<td>".$rowSub['dateReserved']."</td>";
+													echo "<td>".$rowSub['firstName'].' '.$rowSub['lastName']."</td>";
+													echo "<td>".$rowSub['expectedMoveInDate']."</td>";
+													echo "<td>".$rowSub['status']."</td>";
+													echo "<td><button type='button' class='btn btn-success'><a class='white' href=\"\backRoyal\confirmReservation.php?reservationCode=".$rowSub['reservationCode']."&site=vareserve.php"."&action=Void\">Confirm</a></button>&nbsp;&nbsp;&nbsp;<button type='button' class='btn btn-danger'><a class='white' href=\"\backRoyal\cancelReservation.php?reservationCode=".$rowSub['reservationCode']."&site=vareserve.php"."&action=Action\">Reject</a></button></td>";
+													if($rowSub['email_add'] == 'null'){
+														echo "<td>No Deposit Slip Uploaded</td>";
+													}else{
+														echo "<td><a href = ''>View Deposit Slip</a></td>";
+													}
+													echo "</tr>";
+												}
 										}
 									}catch(PDOException $e){
 										echo "Connection failed: " . $e->getMessage();
@@ -227,16 +234,6 @@
              </div>	
 	<hr>					
     </div>
-    
-       
-	   
-	   
-	   
-	   
-	   
-	   
-	   
-            
         
 
     <!-- jQuery -->

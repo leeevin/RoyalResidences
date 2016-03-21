@@ -56,6 +56,7 @@
 											<li><a href="vapay.php">View all Payment Details</a></li>           
 										</ul>
 								</li>	
+								<li><a href="editsite.php">Edit</a></li>
 								<li><a href="registration.php">Registration</a></li>
 								<li><a href="managerooms.php">Manage Rooms</a></li>
 								<li><a href="accounts.php">Accounts</a></li>

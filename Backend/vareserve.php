@@ -58,6 +58,7 @@
 											<li><a href="vapay.php">View all Payment Details</a></li>                
 										</ul>
 								</li>				
+								<li><a href="editsite.php">Edit</a></li>
 								<li><a href="registration.php">Registration</a></li>
 								<li><a href="managerooms.php">Manage Rooms</a></li>
 								<li><a href="accounts.php">Accounts</a></li>
@@ -78,8 +79,36 @@
 	<hr>
 			<div class="panel panel-default">
                             <div class="panel-heading">
-                                <h3 class="panel-title"><i class="fa fa-clock-o fa-fw"></i> Reservations  </h3>
+                                <h3 class="panel-title"><i class="fa fa-clock-o fa-fw"></i> Reservations  
+								<?php
+										$servername = "localhost";
+										$dbusername = "root";
+										$dbpassword = "";
+										$db = "royaldb";
+										try {
+											$conn = new PDO("mysql:host=$servername;dbname=$db", $dbusername, $dbpassword);
+											// set the PDO error mode to exception
+											$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+											$sql = "SELECT * FROM reservation";
+											$res = $conn->query($sql);
+											$count = $res->rowCount();
+											if ($res->rowcount() >= 1){
+												echo "$count&nbsp;&nbsp;&nbsp;&nbsp;";
+											}else{
+												echo "0";
+											}
+										}catch(PDOException $ed){
+											echo "Connection failed: " . $ed->getMessage();
+										}
+									?>
+								</h3>
                             </div>
+							<script>
+								function newPopup(url) {
+									popupWindow = window.open(
+										url,'popUpWindow','height=350,width=600,left=10,top=10,resizable=yes,scrollbars=no,toolbar=no,menubar=no,location=no,directories=no,status=yes')
+								}
+							</script>
                             <div class="panel-body">
                                 <div class="list-group">
                                     <table class="table table-bordered table-hover">
@@ -87,8 +116,9 @@
 										<th>Date <a href="/backRoyal/sort.php?param=dateReserved"><span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span></a></th>
 										<th>Name <a href="/backRoyal/sort.php?param=firstName"><span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span></a></th>
 										<th>Move-in date <a href="/backRoyal/sort.php?param=expectedMoveInDate"><span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span></a></th>
-										<th>Payment</th>
 										<th>Status <a href="/backRoyal/sort.php?param=status"><span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span></a></th>
+										<th>Action</th>
+										<th>Deposit Slip</th>
 									</tr>
 									<?php
 										$servername = "localhost";
@@ -103,6 +133,7 @@
 											$sql = "SELECT * FROM reservation";
 											$res = $conn->query($sql);
 											$counter = 1;
+											$file_name = "http://clixsenseteam.com/wp-content/uploads/2013/10/cs25.jpg";
 											if($res->rowcount() < 1) {
 												
 												echo "</table>";
@@ -116,8 +147,8 @@
 													echo "<td>".$rowSub['firstName'].' '.$rowSub['lastName']."</td>";
 													echo "<td>".$rowSub['expectedMoveInDate']."</td>";
 													echo "<td>".$rowSub['status']."</td>";
-													echo "<td>".$rowSub['status']."</td>"; //What Status?
-													echo "<td><button type='button' class='btn btn-success'><a href=\"\backRoyal\confirmReservation.php?reservationCode=".$rowSub['reservationCode']."&site=vareserve.php"."&action=Void\">Confirm</a></button><button type='button' class='btn btn-danger'><a href=\"\backRoyal\cancelReservation.php?reservationCode=".$rowSub['reservationCode']."&site=vareserve.php"."&action=Action\">Reject</a></button></td>";
+													echo "<td><button type='button' class='btn btn-success'><a class='white' href=\"\backRoyal\confirmReservation.php?reservationCode=".$rowSub['reservationCode']."&site=vareserve.php"."&action=Void\">Confirm</a></button>&nbsp;&nbsp;&nbsp;<button type='button' class='btn btn-danger'><a class='white' href=\"\backRoyal\cancelReservation.php?reservationCode=".$rowSub['reservationCode']."&site=vareserve.php"."&action=Action\">Reject</a></button></td>";
+													echo '<td width="150"><a href="javascript:void(0);" onclick="newPopup(\''.$file_name.'\');">View Deposit Slip</a></td>';
 													echo "</tr>";
 												}
 											}
@@ -129,7 +160,80 @@
                                 </div>
                                
                             </div>
-             </div>	
+             </div>
+			<div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h3 class="panel-title"><i class="fa fa-clock-o fa-fw"></i> Archive
+									<?php
+										$servername = "localhost";
+										$dbusername = "root";
+										$dbpassword = "";
+										$db = "royaldb";
+										try {
+											$conn = new PDO("mysql:host=$servername;dbname=$db", $dbusername, $dbpassword);
+											// set the PDO error mode to exception
+											$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+											$sql = "SELECT * FROM reservation_archive";
+											$res = $conn->query($sql);
+											$count = $res->rowCount();
+											if ($res->rowcount() >= 1){
+												echo "$count&nbsp;&nbsp;&nbsp;&nbsp;";
+											}else{
+												echo "0";
+											}
+										}catch(PDOException $ed){
+											echo "Connection failed: " . $ed->getMessage();
+										}
+									?>
+								</h3>
+                            </div>
+                            <div class="panel-body">
+                                <div class="list-group">
+                                    <table class="table table-bordered table-hover">
+									<tr>
+										<th>Date <a href="/backRoyal/sort.php?param=dateReserved"><span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span></a></th>
+										<th>Name <a href="/backRoyal/sort.php?param=firstName"><span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span></a></th>
+										<th>Move-in date <a href="/backRoyal/sort.php?param=expectedMoveInDate"><span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span></a></th>
+										<th>Status</th>
+									</tr>
+									<?php
+										$servername = "localhost";
+										$dbusername = "root";
+										$dbpassword = "";
+										$db = "royaldb";
+										
+										try {
+											$conn = new PDO("mysql:host=$servername;dbname=$db", $dbusername, $dbpassword);
+											// set the PDO error mode to exception
+											$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+											$sql = "SELECT * FROM reservation_archive";
+											$res = $conn->query($sql);
+											$counter = 1;
+											if($res->rowcount() < 1) {
+												
+												echo "</table>";
+												echo "<h4>No Archived Applicants Available</h4>";
+												
+											} else {
+												while($rowSub = $res->fetch(PDO::FETCH_LAZY)){
+													
+													echo "<tr>";
+													echo "<td>".$rowSub['dateReserved']."</td>";
+													echo "<td>".$rowSub['firstName'].' '.$rowSub['lastName']."</td>";
+													echo "<td>".$rowSub['expectedMoveInDate']."</td>";
+													echo "<td>".$rowSub['status']."</td>";
+													echo "</tr>";
+												}
+											}
+										}catch(PDOException $e){
+											echo "Connection failed: " . $e->getMessage();
+										}
+									?>
+								 </table>
+                                </div>
+                            </div>
+							
+             </div>
 	<hr>					
     </div>
     
