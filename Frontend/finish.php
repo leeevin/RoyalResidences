@@ -44,11 +44,10 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
-                   <li><a href="index.php">About</a></li>
-                    <li><a href="gallery.php">Gallery</a></li>
-                    <li class ="active"><a href="reg_1_solo_group.php">Reservation</a></li>
-                    <li><a href="reservationStatus.php">Reservation Status</a></li>
-                    <li><a href="tenantlogin.php">Log in</a></li>
+                    <li><a href="index.html">About</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                    <li class ="active"><a href="registration.html">Reservation</a></li>
+                    <li><a href="status.html">Reservation Status</a></li>
                 </ul>
 			</div>
 		</div>
@@ -74,20 +73,6 @@
 						<?php }?>
                     </div>      
                 </div>
-                <!--<div class="progress">
-                    <div class="progress-bar progress-bar-info" role="progressbar" style="width:25%">
-                        Room Reservation
-                    </div>
-                    <div class="progress-bar progress-bar-danger" role="progressbar" style="width:25%">
-                        Personal Information
-                    </div>
-                    <div class="progress-bar progress-bar-danger" role="progressbar" style="width:25%">
-                        Other Personal Information
-                    </div>
-                    <div class="progress-bar progress-bar-danger" role="progressbar" style="width:25%">
-                            Certification
-                    </div>
-                </div> -->
                     <div class ="row" >
                         <div class="col-lg-12">
                             <div class ="container-fluid">
@@ -95,13 +80,13 @@
                                     <h3><i class="glyphicon glyphicon-ok"></i> Reservation</h3>
                                 </div>
                                 			<p align ="justify">
-				For payment, kindly deposit the reservation fee of PHP 1,000.00 to this bank account number: <span class ="inner_message"><u>0000-00122-FS092-00215</u></span>. Once you already have deposited
-				your payment, login the reservation ID below to reservation status page to be notified on the confirmation of your reservation.
+				Please login the reservation id below to know what you will do next.
 			</p> 
+			<p>Reservation ID: <u><?php echo $resCode;?></u></p>
 			
 			<p>Thank you for choosing Royal Residence! For more information, call 123-4567, text 09876543212, or email royalresidence@gmail.com</p>
 			
-			<p>Reservation ID: <u><?php echo $resCode;?></u></p>
+			
                             </div>
                         </div>
                     </div>

@@ -44,7 +44,6 @@
                     <li><a href="gallery.html">Gallery</a></li>
                     <li class ="active"><a href="registration.html">Reservation</a></li>
                     <li><a href="status.html">Reservation Status</a></li>
-					<li><a href="tenantlogin.php">Log in</a></li>
                 </ul>
             </div>
         </div>
@@ -123,6 +122,7 @@
                     
                             <div class ="row">
                                 <div class="col-md-6">
+							<?php if($_SESSION['occupational_status'] == "employed") {?>
                             <div class ="page-header">
                                 <h3><i class="glyphicon glyphicon-briefcase"></i> Business/Employment Information</h3>
                             </div>
@@ -158,6 +158,7 @@
                                         </div>
                                     </div>
                                 </div>
+								<?php}?>
                         </div>
                 </div>
                         

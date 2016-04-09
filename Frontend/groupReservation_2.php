@@ -48,7 +48,6 @@
                     <li><a href="gallery.php">Gallery</a></li>
                     <li class ="active"><a href="reg_1_solo_group.php">Reservation</a></li>
                     <li><a href="reservationStatus.php">Reservation Status</a></li>
-					<li><a href="tenantlogin.php">Log in</a></li>
                 </ul>
             <!-- /.navbar-collapse -->
         </div>

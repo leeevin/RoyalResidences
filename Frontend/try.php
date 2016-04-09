@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -35,17 +36,17 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html">Royal Residence</a>
+               <a class="navbar-brand" href="index.php">Royal Residence</a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="index.html">About</a></li>
-                    <li><a href="gallery.html">Gallery</a></li>
-                    <li class ="active"><a href="numberOfPersons_reg.php">Reservation</a></li>
-                    <li><a href="status.html">Reservation Status</a></li>
+                    <li><a href="index.php">About</a></li>
+                    <li><a href="gallery.php">Gallery</a></li>
+                    <li class ="active"><a href="reg_1_solo_group.php">Reservation</a></li>
+                    <li><a href="reservationStatus.php">Reservation Status</a></li>
                 </ul>
-            <!-- /.navbar-collapse -->
+                  
         </div>
         <!-- /.container -->
     </nav>
@@ -57,49 +58,56 @@
             <div class="col-lg-12">
                 <h1 class="page-header">Registration
                 </h1>
-                <div class="row">
-                    <div class="progress" id="progress1" style="margin-top: 20px; margin-bottom: 0px;">
-                        <div class="progress-bar" role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" style="width: 25%;">                
-                        </div>
-                        <span class="progress-type">Room Reservation</span>
-                        <span class="progress-completed">25%</span>
-                    </div>      
-                </div>
+				<form action = "try.php" method = "post" enctype = "multipart/form-data">
                     <div class ="row" >
-                        <div class ="page-header">
-                            <h3><i class="glyphicon glyphicon-bed"></i> Reservation for an Occupancy</h3>
-                        </div>
-					<form action = "checkNumberOfPersons.php" method = "post">
-                        <div class ="row">
-                            <div class="col-md-7">
-                                <div class="control-group form-group">
-                                    <div class="controls">
-                                        <label>Number of persons to reserve</label>
-                                        <p class="help-block"></p>
-                                        <label class="radio-inline">
-                                          <input type="text" name="numberOfPersons" id="inlineRadio1">
-                                        </label>    
-                                    </div>
+                        <div class="col-lg-12">
+                            <div class ="container-fluid">
+                                <div class ="page-header">
+                                    <h3><i class="glyphicon glyphicon-file"></i> Certification</h3>
                                 </div>
-                           
-                               
+							<table>
+								<tr>
+									<td><p><label>Please upload an image</label></p></td>
+                                <td><div class="form-group">
+                                    <input type="file" name = "file">
+                                </div></td>
+								</tr>
+								<?php
+								session_start();
+								$count = $_SESSION['counter'];
+										if(isset($_POST['new'])) {
+											$count++;
+										for($x=1; $x<$count; $x++) {
+								?>
+								<tr>
+									<td><p><label>Please upload an image</label></p></td>
+                                <td><div class="form-group">
+                                    <input type="file" name = "file">
+                                </div></td>
+								</tr>
+								<?php }
+										}?>
+							</table>
+									<div class = "pageButton">
+										<ul class = "pager">
+											<li><input type = "submit" value ="upload new" name = "new" class="btn btn-default"></li>
+										</ul>
+									</div>
                             </div>
-                                
-                            
                         </div>
-                        <hr>
-                            <div class = "pageButton">
-                                <ul class = "pager">
-									<li><button type="submit" name="submit1">Next</button></li>
-								</ul>
-                            </div>
-						</form>
+                    </div>
+                    <hr>
+						<div class = "pageButton">
+							<ul class = "pager">
+								<li><input type = "submit" value ="next" name = "submitcert" class="btn btn-default"></li>
+							</ul>
+						</div>
+					</form>
                     </div>
                 </div>
             </div>
         </div>
         </div>
-    </div>
     <!-- /.container -->
             
 

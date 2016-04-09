@@ -1,13 +1,6 @@
 <?php
-include('connect.php');
 session_start();
-$sql = "SELECT sum(spaceAvailable) from rooms";
-$results = mysqli_query($conn, $sql);
-$row = mysqli_fetch_row($results);
-$sum = $row[0];
-if($sum == 0) {
-	header('location: sorryNoAvailable.php');
-}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -55,7 +48,6 @@ if($sum == 0) {
                     <li><a href="gallery.php">Gallery</a></li>
                     <li class ="active"><a href="reg_1_solo_group.php">Reservation</a></li>
                     <li><a href="reservationStatus.php">Reservation Status</a></li>
-					<li><a href="tenantlogin.php">Log in</a></li>
                 </ul>
             <!-- /.navbar-collapse -->
         </div>
@@ -85,7 +77,45 @@ if($sum == 0) {
                             <div class="col-md-7">
                                 <div class="control-group form-group">
                                     <div class="controls">
-                                            <h3>There are <span class="label label-primary"><?php echo $sum;?> available space</span></h3>
+                                        <?php
+											include('connect.php');
+											$sql = "SELECT femaleWindowedSolo,maleWindowedSolo,femaleInteriorSolo,
+											maleInteriorSolo, femaleWindowedBedspace, maleWindowedBedspace,
+											femaleInteriorBedspace, maleInteriorBedspace FROM temporary;";
+											$result = $conn->query($sql);
+											
+												while($row = $result->fetch_assoc()) {
+												?>
+													<table>
+													<tr>
+														<td></td>
+														<td>Female</td>
+														<td>Male</td>
+													<tr>
+													<tr>
+														<td>Windowed Solo</td>
+														<td><?php echo $row['femaleWindowedSolo'];?></td>
+														<td><?php echo $row['maleWindowedSolo'];?></td>
+													<tr>
+													<tr>
+														<td>Interior Solo</td>
+														<td><?php echo $row['femaleInteriorSolo'];?></td>
+														<td><?php echo $row['maleInteriorSolo'];?></td>
+													<tr>
+													<tr>
+														<td>Windowed Bedspace</td>
+														<td><?php echo $row['femaleWindowedBedspace'];?></td>
+														<td><?php echo $row['maleWindowedBedspace'];?></td>
+													<tr>
+													<tr>
+														<td>Interior Bedspace</td>
+														<td><?php echo $row['femaleInteriorBedspace'];?></td>
+														<td><?php echo $row['maleInteriorBedspace'];?></td>
+													<tr>
+												<?php
+												}
+											
+											?>
                                         <p class="help-block"></p>
 									<div class="controls">
 										<p>
@@ -114,7 +144,7 @@ if($sum == 0) {
 									<li><button type="submit" name="submit1" class="btn btn-default">Next</button></li>
 								</ul>
                             </div>
-						</form>
+					</form>
                 </div>
             </div>
         </div>

@@ -1,11 +1,14 @@
 <?php
+session_start();
 include('connect.php');
-$resID = $_POST['resId'];
+$_SESSION['reservation_code'] = $_POST['resId'];
+$resID = $_SESSION['reservation_code'];
 
-$sql = "SELECT status from reservation where reservationCode = $resID";
+
+$sql = "SELECT status from reservation where reservationCode = '$resID'";
 $results = mysqli_query($conn, $sql);
 
-			if($results->num_rows >= 1) {
+			if($results->num_rows > 0) {
 				$row = mysqli_fetch_row($results);
 				$status = $row[0];
 				$invalidLogin = false;
@@ -63,7 +66,6 @@ $results = mysqli_query($conn, $sql);
                     <li><a href="gallery.php">Gallery</a></li>
                     <li><a href="reg_1_solo_group.php">Reservation</a></li>
                     <li class ="active"><a href="reservationStatus.php">Reservation Status</a></li>
-                    <li><a href="tenantlogin.php">Log in</a></li>
                 </ul>
             </div> 
             <!-- /.navbar-collapse -->
@@ -89,11 +91,40 @@ $results = mysqli_query($conn, $sql);
 							 <?php
 							 }else if($status == "pending") {
 							 ?>
-								<p> Your reservation is still pending</p>
+								<p> Your reservation is still pending. Please pay PHP 1,000.00 If you already paid the reservation fee
+								 please upload a picture of the receipt. 
+								 </p>
+								 <form action = "upload.php" method = "post" enctype = "multipart/form-data">
+									<div class="form-group">
+										<input type="file" name = "file" required>
+									</div>
+								<hr>
+								<div class = "pageButton">
+									<ul class = "pager">
+										<li><input type = "submit" value ="Upload" name = "submitstat" class="btn btn-default"></li>
+									</ul>
+								</div>
+								</form>
 							  <?php
-								}else {
+								}else if($status == "reserved"){
 							  ?>
-							  <p>You are now reserved. Please pay the one month advance and cash deposit </p>
+							  <p>You are now reserved. Please pay the one month advance and two months deposit. If you already paid the one month advance and two months deposit.</p>
+								<form action = "upload.php" method = "post" enctype = "multipart/form-data">
+									<div class="form-group">
+										<input type="file" name = "file" required>
+									</div>
+								<hr>
+								<div class = "pageButton">
+									<ul class = "pager">
+										<li><input type = "submit" value ="Upload" name = "submitdep" class="btn btn-default"></li>
+									</ul>
+								</div>
+								</form>
+							  <?php
+							  }else {
+							  ?>
+								<p>Thank you for paying the one month advance and two months deposit</p>click 
+								<a href = "personalInformation.php"><span class="label label-default" style="font-size: 13px">here</span></a> to fill up your registration form.
 							  <?php
 							  }
 							  ?>

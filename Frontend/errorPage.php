@@ -136,6 +136,7 @@ if(isset($_POST['submitgr1'])) {
 	$_SESSION['preference'] = $_POST['preference'];
 	unset($_SESSION['errors']);
 	if($_SESSION['relationship'] == "others") {
+		$_SESSION['type_of_occupancy'] = $_POST['type_of_occupancy'];
 		if(empty($_SESSION['type_of_occupancy'])) {
 		$_SESSION['errors'] =  array("Please select a type of occupancy");
 	    }
@@ -196,6 +197,7 @@ if(isset($_POST['submitgr3'])) {
 	$_SESSION['move_in_date'] = $_POST['move_in_date'];
 	$_SESSION['email_add'] = $_POST['email_add'];
 	$_SESSION['contact_number'] = $_POST['contact_number'];
+	$len = strlen((string)$_SESSION['contact_number']);
 	$gap = date_diff(date_create($_SESSION['move_in_date']), date_create('now'))->m;
 	$gapD = date_diff(date_create($_SESSION['move_in_date']), date_create('now'))->d;
 	if(empty(trim($_SESSION['email_add']))) {
@@ -227,7 +229,11 @@ if(isset($_POST['submitPerIn'])) {
 	$_SESSION['civil_status'] = $_POST['civil_status'];
 	$_SESSION['occupation_status'] = $_POST['occupation_status'];
 	$_SESSION['religion'] = $_POST['religion'];
-	$_SESSION['provincial_address'] = $_POST['provincial_address'];
+	$_SESSION['house_no'] = $_POST['house_no'];
+	$_SESSION['street'] = $_POST['street'];
+	$_SESSION['barangay'] = $_POST['barangay'];
+	$_SESSION['municipality'] = $_POST['municipality'];
+	$_SESSION['province'] = $_POST['province'];
 	$_SESSION['international_address'] = $_POST['international_address'];
 	$_SESSION['id_number'] = $_POST['id_number'];
 	$_SESSION['passport_number'] = $_POST['passport_number'];
@@ -241,9 +247,15 @@ if(isset($_POST['submitPerIn'])) {
 	if(empty(trim($_SESSION['nationality']))) {
 		$_SESSION['errors'] =  array("Please enter a valid nationality");
 	}
-	
+	if($len > 11) {
+		$_SESSION['errors'] =  array("Please enter a valid contact number");
+	}
 	if(empty($_SESSION['civil_status'])){
 		$_SESSION['errors'] =  array("Please select a civil status");
+	}
+	
+	if(empty($_SESSION['occupation_status'])){
+		$_SESSION['errors'] =  array("Please select an occupational status");
 	}
 	
 	if(empty(trim($_SESSION['religion'])) || $_SESSION['religion'] == null) {
@@ -306,6 +318,88 @@ if(isset($_POST['submitOtherPer'])){
 	$_SESSION['spouse_occupation'] = $_POST['spouse_occupation'];
 	$_SESSION['spouse_tel_num'] = $_POST['spouse_tel_num'];
 	$_SESSION['health'] = $_POST['health'];
+	
+	if(empty(trim($_SESSION['name_of_school']))) {
+		$_SESSION['errors'] =  array("Please enter the name of your school");
+	}
+	
+	if(empty(trim($_SESSION['name_of_hschool']))) {
+		$_SESSION['errors'] =  array("Please enter the name of your high school");
+	}
+	
+	if(empty(trim($_SESSION['school_address_hs']))) {
+		$_SESSION['errors'] =  array("Please enter the address of your high school");
+	}
+	
+	if(empty(trim($_SESSION['tel_num_hs']))) {
+		$_SESSION['errors'] =  array("Please enter the telephone number of your school");
+	}
+	
+	if(empty(trim($_SESSION['course_and_year']))) {
+		$_SESSION['errors'] =  array("Please enter your course and year");
+	}
+	
+	if($_SESSION['occupation_status'] == "employed") {
+		
+		if(empty(trim($_SESSION['name_of_company']))){
+			$_SESSION['errors'] =  array("Please enter the name of your company");
+		}
+		
+		if(empty(trim($_SESSION['company_address']))){
+			$_SESSION['errors'] =  array("Please enter the your company address");
+		}
+		
+		if(empty(trim($_SESSION['occupation_position']))){
+			$_SESSION['errors'] =  array("Please enter your occupation or position");
+		}
+		
+		if(empty(trim($_SESSION['nature_of_business']))){
+			$_SESSION['errors'] =  array("Please enter the nature of your business");
+		}
+		
+		if(empty(trim($_SESSION['tel_num_bus']))){
+			$_SESSION['errors'] =  array("Please enter the telephone number of your company");
+		}
+	}
+	
+	if(empty(trim($_SESSION['father'])) && empty(trim($_SESSION['mother']))){
+			$_SESSION['errors'] =  array("Please enter the information about your mother or father");
+	}else{
+		if(!empty(trim($_SESSION['father']))) {
+			if(empty(trim($_SESSION['father_occupation']))) {
+				$_SESSION['errors'] =  array("Please enter your father's occupation");
+			}
+			if(empty(trim($_SESSION['father_tel_num']))) {
+				$_SESSION['errors'] =  array("Please enter your father's contact number");
+			}
+		}
+		if(!empty(trim($_SESSION['mother']))) {
+			if(empty(trim($_SESSION['mother_occupation']))) {
+				$_SESSION['errors'] =  array("Please enter your father's occupation");
+			}
+			if(empty(trim($_SESSION['mother_tel_num']))) {
+				$_SESSION['errors'] =  array("Please enter your father's contact number");
+			}
+		}
+		if(!empty(trim($_SESSION['guardian']))) {
+			$_SESSION['guardian'] = "";
+			$_SESSION['guardian_occupation'] = "";
+			$_SESSION['guardian_tel_num'] = "";
+		}
+		if(!empty(trim($_SESSION['spouse']))) {
+			$_SESSION['spouse'] = "";
+			$_SESSION['spouse_occupation'] = "";
+			$_SESSION['spouse_tel_num'] = "";
+		}
+	}
+	
+	
+	if(empty(trim($_SESSION['health']))){
+			$_SESSION['errors'] =  array("Please enter you health problems");
+	}
+	
+	
+	
 	if(isset($_SESSION['errors'])) {
 			header('location: otherPersonal.php');
 	}else {

@@ -1,5 +1,5 @@
 <?php
-
+include('connect.php');
 $dbc = mysqli_connect("localhost", "root", "", "royaldb");
 $db = mysqli_select_db($dbc, "royaldb");
 
@@ -58,7 +58,7 @@ $addressQuery = mysqli_query($dbc,"SELECT * FROM aboutus_contactdetails where ty
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.php">Royal Residence</a>
+                <a class="navbar-brand" href="index.html">Royal Residence</a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -67,7 +67,6 @@ $addressQuery = mysqli_query($dbc,"SELECT * FROM aboutus_contactdetails where ty
                     <li><a href="gallery.php">Gallery</a></li>
                     <li><a href="reg_1_solo_group.php">Reservation</a></li>
                     <li><a href="reservationStatus.php">Reservation Status</a></li>
-					<li><a href="tenantlogin.php">Log in</a></li>
                 </ul>
             </div>
         <!-- /.container -->
@@ -100,23 +99,22 @@ $addressQuery = mysqli_query($dbc,"SELECT * FROM aboutus_contactdetails where ty
             <div class="col-md-8">
                 <div class="panel panel-primary">
                     <div class="panel-heading">
-                        <h4><i class="fa fa-fw fa-home"></i> Building Amenities
-							<i class="pull-right" data-toggle="modal" data-target=".bs-example2-modal-lg">
-                                <span class="glyphicon glyphicon-question-sign" data-toggle="popover" data-trigger="hover" data-content="Click for images" data-placement="top"></span> 
-                            </i>
-						</h4>
+                        <h4><i class="fa fa-fw fa-home"></i> Building Amenities</h4>
                     </div>
                     <div class="panel-body">
-						<ul>
-							  <?php 
-								 if ($amenitiesQuery) {
-										   while ($row = mysqli_fetch_array($amenitiesQuery,MYSQL_ASSOC)) {
-																$printAmenities  = $row['amenities'];
-																 echo("<li>$printAmenities</li>");
-															}
-														}
-						   ?>
-						</ul>
+                    <ul>
+                          <?php 
+                             if ($amenitiesQuery) {
+                                       while ($row = mysqli_fetch_array($amenitiesQuery,MYSQL_ASSOC)) {
+                                                            $printAmenities  = $row['amenities'];
+                                                             echo("<li>$printAmenities</li>");
+                                                        }
+                                                    }
+                       ?>
+                    </ul>
+                        <br />
+                        
+                        <a href="gallery.php" class="btn btn-default">Learn More</a>
                     </div>
                 </div>
             </div>
@@ -149,7 +147,7 @@ $addressQuery = mysqli_query($dbc,"SELECT * FROM aboutus_contactdetails where ty
                         <h4>
                             <i class="glyphicon glyphicon-user"></i> Room Capacity
                             <i class="pull-right" data-toggle="modal" data-target=".bs-example-modal-lg">
-								<span class="glyphicon glyphicon-question-sign" data-toggle="popover" data-trigger="hover" data-content="Click for images" data-placement="top"></span>
+                            <span class="glyphicon glyphicon-question-sign" data-toggle="popover" data-trigger="hover" data-content="Click for images" data-placement="top"></span> 
                             </i>
                         </h4> 
                         
@@ -221,49 +219,10 @@ $addressQuery = mysqli_query($dbc,"SELECT * FROM aboutus_contactdetails where ty
             <div class="row">
             <h4>Contact details:</h4>
             <ul class="list-unstyled">
-
-
-                 <?php 
-                if ($telNoQuery) {
-                                       while ($row = mysqli_fetch_array($telNoQuery,MYSQL_ASSOC)) {
-                                                            $printTelno  = $row['contactDetails'];
-                                                           
-                                                             echo("<li> Tel No.: $printTelno</li>");
-                                                        }
-                                                    }
-
-                
-
-                 if ($mobileNoQuery) {
-                                       while ($row = mysqli_fetch_array($mobileNoQuery,MYSQL_ASSOC)) {
-                                                            $printMobileNo  = $row['contactDetails'];
-                                                           
-                                                             echo("<li> Mobile No.: $printMobileNo</li>");
-                                                        }
-                                                    }
-
-                
-
-                if ($emailQuery) {
-                                       while ($row = mysqli_fetch_array($emailQuery,MYSQL_ASSOC)) {
-                                                            $printEmailAddress  = $row['contactDetails'];
-                                                           
-                                                             echo("<li> Email Address: $printEmailAddress</li>");
-                                                        }
-                                                    }
-
-                
-
-               if ($addressQuery) {
-                                       while ($row = mysqli_fetch_array($addressQuery,MYSQL_ASSOC)) {
-                                                            $printAddress = $row['contactDetails'];
-                                                           
-                                                             echo("<li> Address: $printAddress</li>");
-                                                        }
-                                                    }
-
-                ?>
-
+              <li>Tel. No: (074) 424-1300</li>
+              <li>Mobile No: 0917-863-4007</li>
+              <li>Email Address: bestway10cdc@yahoo.com</li>
+              <li>Address: Rimando Road, Aurora Hill-Trancoville, Baguio City</li>
             </ul>
             </div>
         </footer>
@@ -271,42 +230,11 @@ $addressQuery = mysqli_query($dbc,"SELECT * FROM aboutus_contactdetails where ty
     </div>
     <!-- /.container -->
             
-	<!-- Building Amenities -->
-    <div class="modal fade bs-example2-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="padding-top: 3%">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-                <div class ="modal-header">
-                    <div class ="modal-title">
-                        <h4>Building Amenities</h4>
-                    </div>
-                    <div id="carousel-example2-generic" class="carousel slide carousel-fit" data-ride="carousel">
-                    <!-- Wrapper for slides -->
-                    <div class="carousel-inner">
-						<div class="item active">
-							<img class="img-responsive" src="images/1.JPG" alt="...">
-								<div class="carousel-caption">
-									<h3>Solo Occupancy</h3>
-								</div>
-						</div>
-                    </div>
-                    <!-- Controls -->
-                    <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
-                    <span class="glyphicon glyphicon-chevron-left"></span>
-                    </a>
-                    <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
-                    <span class="glyphicon glyphicon-chevron-right"></span>
-                    </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- End of Building Amenities-->
             
     <!-- Room Capacity -->
     <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="padding-top: 3%">
         <div class="modal-dialog modal-lg">
-            <div class="modal-content">
+            <div class="modal-content"style ="width: 80%;margin-left:auto;margin-right: auto;">
                 <div class ="modal-header">
                     <div class ="modal-title">
                         <h4>Room Capacity</h4>
@@ -323,13 +251,19 @@ $addressQuery = mysqli_query($dbc,"SELECT * FROM aboutus_contactdetails where ty
                     <div class="item">
                     <img class="img-responsive" src="images/2.jpg" alt="...">
                     <div class="carousel-caption">
-                    <h3>2 Occupancy</h3>
+                    <h3>2-Occupancy</h3>
                     </div>
                     </div>
                     <div class="item">
                     <img class="img-responsive" src="images/3.JPG" alt="...">
                     <div class="carousel-caption">
-                    <h3>3-4 Occupancy</h3>
+                    <h3>3-Occupancy</h3>
+                    </div>
+                    </div>
+                    <div class="item">
+                    <img class="img-responsive" src="images/4.jpg" alt="...">
+                    <div class="carousel-caption">
+                    <h3>4-Occupancy</h3>
                     </div>
                     </div>
                     </div>
@@ -349,40 +283,42 @@ $addressQuery = mysqli_query($dbc,"SELECT * FROM aboutus_contactdetails where ty
     <!-- End of Room Capacity -->
         
     <!-- Room Features -->
-    <div class="modal fade bs-example1-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="padding-top: 3%">
+    <div class="modal fade bs-example1-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="padding-top: 3%">
         <div class="modal-dialog modal-lg">
-            <div class="modal-content">
+            <div class="modal-content"style ="width: 80%;margin-left:auto;margin-right: auto;">
                 <div class ="modal-header">
                     <div class ="modal-title">
                         <h4>Room Features</h4>
                     </div>
-					<div id="carousel-example1-generic" class="carousel slide carousel-fit" data-ride="carousel">
-					<!-- Wrapper for slides -->
-					<div class="carousel-inner clearfix">
-						<div class="item active">
-							<img class="img-responsive" src="images/4.jpg" alt="...">
-								<div class="carousel-caption">
-								<h3>Study table and chair with lamp</h3>
-								</div>
-						</div>
-						<div class="item">
-							<img class="img-responsive"  src="images/22.JPG" alt="...">
-								<div class="carousel-caption">
-								<h3>Private toilet and bathroom</h3>
-								</div>
-						</div>
-					</div>
+                <div id="carousel-example1-generic" class="carousel slide carousel-fit" data-ride="carousel">
 
-					<!-- Controls -->
-					<a class="left carousel-control" href="#carousel-example1-generic" role="button" data-slide="prev">
-					<span class="glyphicon glyphicon-chevron-left"></span>
-					</a>
-					<a class="right carousel-control" href="#carousel-example1-generic" role="button" data-slide="next">
-					<span class="glyphicon glyphicon-chevron-right"></span>
-					</a>
-					</div>
-				</div>
-			</div>
+
+
+                <!-- Wrapper for slides -->
+                <div class="carousel-inner clearfix">
+                    <div class="item active">
+                        <img class="img-responsive" src="images/4.jpg" alt="...">
+                            <div class="carousel-caption">
+                            <h3>Study table and chair with lamp</h3>
+                            </div>
+                    </div>
+                    <div class="item">
+                        <img class="img-responsive"  src="images/15.JPG" alt="...">
+                            <div class="carousel-caption">
+                            <h3>Private toilet and bathroom</h3>
+                            </div>
+                    </div>
+                </div>
+
+                <!-- Controls -->
+                <a class="left carousel-control" href="#carousel-example1-generic" role="button" data-slide="prev">
+                <span class="glyphicon glyphicon-chevron-left"></span>
+                </a>
+                <a class="right carousel-control" href="#carousel-example1-generic" role="button" data-slide="next">
+                <span class="glyphicon glyphicon-chevron-right"></span>
+                </a>
+                </div>
+            </div>
         </div>
     </div>
 	<!-- End of Room Features -->
@@ -411,5 +347,3 @@ $addressQuery = mysqli_query($dbc,"SELECT * FROM aboutus_contactdetails where ty
 </body>
 
 </html>
-
-

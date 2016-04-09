@@ -1,9 +1,6 @@
-<?
+<?php
 session_start();
 include('connect.php');
-$resCode = $_SESSION['reservation_code'];
-$sql = "SELECT lastName, firstName, middleName, birthday, email_add FROM reservation where reservationCode = $resCode;";
-$result = $conn->query($sql);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -49,7 +46,6 @@ $result = $conn->query($sql);
                     <li><a href="gallery.php">Gallery</a></li>
                     <li class ="active"><a href="reg_1_solo_group.php">Reservation</a></li>
                     <li><a href="reservationStatus.php">Reservation Status</a></li>
-					<li><a href="tenantlogin.php">Log in</a></li>
                 </ul>
 			</div>
             <!-- Collect the nav links, forms, and other content for toggling -->
@@ -101,7 +97,9 @@ $result = $conn->query($sql);
                                         </div>
                                     </div>
 									<?php
-										
+										$resCode = $_SESSION['reservation_code'];
+										$sql = "SELECT lastName, firstName, middleName, birthday, email_add, gender FROM reservation where reservationCode = $resCode;";
+										$result = $conn->query($sql);
 										if ($result->num_rows > 0) {
 											while($row = $result->fetch_assoc()) {
 									?>
@@ -138,8 +136,10 @@ $result = $conn->query($sql);
                                             <?php
 											$_SESSION['birthday'] = $row['birthday'];
 											$_SESSION['email_add'] = $row['email_add'];
+											$_SESSION['gender'] = $row['gender'];
 											echo $_SESSION['birthday'];
 									}
+								}
 											?>
                                         </div>
                                     </div>
@@ -183,7 +183,11 @@ $result = $conn->query($sql);
                                     <div class="control-group form-group">
                                         <div class="controls">
                                            <label>Provincial Address:</label>
-                                            <input type ="text" class ="form-control" name = "provincial_address" required>
+                                            <label>House number: <label><input type ="text" class ="form-control" name = "house_no" required>
+											<label>Street: <label><input type ="text" class ="form-control" name = "street" required>
+											<label>Barangay: <label><input type ="text" class ="form-control" name = "barangay" required>
+											<label>Municipality: <label><input type ="text" class ="form-control" name = "municipality" required>
+											<label>Province: <label><input type ="text" class ="form-control" name = "province" required>
                                         </div>
                                     </div>
                                     <div class="control-group form-group">

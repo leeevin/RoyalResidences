@@ -4,7 +4,7 @@
 	if($_SESSION['type_of_reservation'] == "group") {
 	 $numberOfPersons = $_SESSION['numberOfPersons'];
 	}else {
-		$numberOfPersons = 1;
+		$numberOfpersons = 1;
 	}
 	
 ?>
@@ -54,7 +54,6 @@
                     <li><a href="gallery.php">Gallery</a></li>
                     <li class ="active"><a href="reg_1_solo_group.php">Reservation</a></li>
                     <li><a href="reservationStatus.php">Reservation Status</a></li>
-                    <li><a href="tenantlogin.php">Log in</a></li>
                 </ul>
                   
         </div>
@@ -90,16 +89,125 @@
                                 <div class ="page-header">
                                     <h3><i class="glyphicon glyphicon-file"></i> Certification</h3>
                                 </div>
-								<p> You are now <span class="label label-default" style="font-size: 13px"><?php echo $_SESSION['type_of_reservation'];?> reserving a <?php echo $_SESSION['type_of_occupancy'];?> <?php echo $_SESSION['preference'];?> room 
-								for <?php if($numberOfPersons > 1) { echo $numberOfPersons; }else{ echo "1";}?> person/s.</span> You are expected to move in to royal residence
-								at <?php echo $_SESSION['move_in_date'];?>. </p>
-					<form action = "upload.php" method = "post" enctype = "multipart/form-data">
-                                <p><label>Please upload an image of your ID or either of your parents' ID.</label></p>
-								<?php if($_SESSION['type_of_reservation'] == "group") {?> <p>Upload one picture only please</p>
+								    <p>Type of Reservation: <?php echo $_SESSION['type_of_reservation'];?><p>
+								<?php if($_SESSION['type_of_reservation'] == "group") {?>
+									<p>Number of persons: <?php echo $_SESSION['numberOfPersons'];?></p>
+									<?php for($x = 1; $x<=$numberOfPersons; $x++) {
+										echo "<p>Last Name of person ".$x." : " .$_SESSION['lastname'.$x]."</p>";
+										echo "<p>First Name of person ".$x." : " .$_SESSION['firstname'.$x]."</p>";
+										echo "<p>Middle Name of person ".$x." : " .$_SESSION['middlename'.$x]."</p>";
+										echo "<p>Birthday of person ".$x." : " .$_SESSION['birthday'.$x]."</p>";
+											if($_SESSION['gender'] == "combination") {
+												echo "<p>Gender of person ".$x. " : " . $_SESSION['gender'.$x] . "</p>";
+											}else{ 
+												if($_SESSION['gender'] == "male") {
+													echo "<p>Gender of person " .$x. ": Male";
+												}else{
+													echo "<p>Gender of person " .$x. ": Female";
+												
+												}
+											}
+									}
+									?>
+									<p>Preference: <?php echo $_SESSION['preference'];?></p>
+									<p>Type Of Occupancy: <?php echo $_SESSION['type_of_occupancy'];?></p>
+									<p>Email: <?php echo $_SESSION['email_add'];?></p>
+									<p>Contact Number: <?php echo $_SESSION['contact_number'];?></p>
+									<p>Move in date: <?php echo $_SESSION['move_in_date'];?></p>
 								<?php }?>
+								<?php if($_SESSION['type_of_reservation'] == "solo") {?>
+									<p>Last Name: <?php echo $_SESSION['last_name'];?></p>
+									<p>First Name: <?php echo $_SESSION['first_name'];?></p>
+									<p>Middle Name: <?php echo $_SESSION['middle_name'];?></p>
+									<p>Birthday: <?php echo $_SESSION['birthday'];?></p>
+									<p>Gender: <?php echo $_SESSION['gender'];?></p>
+									<p>Preference: <?php echo $_SESSION['preference'];?></p>
+									<p>Type Of Occupancy: <?php echo $_SESSION['type_of_occupancy'];?></p>
+									<p>Email: <?php echo $_SESSION['email_add'];?></p>
+									<p>Contact Number: <?php echo $_SESSION['contact_number'];?></p>
+									<p>Move in date: <?php echo $_SESSION['move_in_date'];?></p>
+									
+								<?php }?>
+						<form action = "upload.php" method = "post" enctype = "multipart/form-data">		
+								<?php
+								if($_SESSION['type_of_reservation'] == "group"){
+									if($_SESSION['numberOfPersons'] == 2) {
+										
+									
+								?>	
+									<p><label>Please upload an image of your ID or either of your parents' ID.</label></p>
+									<p><?php echo $_SESSION['lastname1'] . ", " . $_SESSION['firstname1'];?>
+									<div class="form-group">
+										<input type="file" name = "file1" required>
+									</div>
+									
+									<p><label>Please upload an image of your ID or either of your parents' ID.</label></p>
+									<p><?php echo $_SESSION['lastname2'] . ", " . $_SESSION['firstname2'];?>
+									<div class="form-group">
+										<input type="file" name = "file2" required>
+									</div>
+									
+									<?php
+										if($_SESSION['numberOfPersons'] == 3) {
+									?>
+										<p><label>Please upload an image of your ID or either of your parents' ID.</label></p>
+										<p><?php echo $_SESSION['lastname1'] . ", " . $_SESSION['firstname1'];?>
+										<div class="form-group">
+										<input type="file" name = "file1" required>
+										</div>
+										
+										<p><label>Please upload an image of your ID or either of your parents' ID.</label></p>
+										<p><?php echo $_SESSION['lastname2'] . ", " . $_SESSION['firstname2'];?>
+										<div class="form-group">
+											<input type="file" name = "file2" required>
+										</div>
+										
+										<p><label>Please upload an image of your ID or either of your parents' ID.</label></p>
+										<p><?php echo $_SESSION['lastname3'] . ", " . $_SESSION['firstname3'];?>
+										<div class="form-group">
+											<input type="file" name = "file3" required>
+										</div>
+										
+										<?php
+											if($_SESSION['numberOfPersons'] == 4) {
+										?>
+											<p><label>Please upload an image of your ID or either of your parents' ID.</label></p>
+											<p><?php echo $_SESSION['lastname1'] . ", " . $_SESSION['firstname1'];?>
+											<div class="form-group">
+											<input type="file" name = "file1" required>
+											</div>
+											
+											<p><label>Please upload an image of your ID or either of your parents' ID.</label></p>
+											<p><?php echo $_SESSION['lastname2'] . ", " . $_SESSION['firstname2'];?>
+											<div class="form-group">
+												<input type="file" name = "file2" required>
+											</div>
+											
+											<p><label>Please upload an image of your ID or either of your parents' ID.</label></p>
+											<p><?php echo $_SESSION['lastname2'] . ", " . $_SESSION['firstname2'];?>
+											<div class="form-group">
+												<input type="file" name = "file3" required>
+											</div>
+											
+											<p><label>Please upload an image of your ID or either of your parents' ID.</label></p>
+											<p><?php echo $_SESSION['lastname4'] . ", " . $_SESSION['firstname4'];?>
+											<div class="form-group">
+												<input type="file" name = "file4" required>
+											</div>
+								<?php
+											}
+										}
+									}
+								} else {
+								?>
+					
+                                <p><label>Please upload an image of your ID or either of your parents' ID.</label></p>
                                 <div class="form-group">
                                     <input type="file" name = "file" required>
                                 </div>
+							<?php
+							}
+							?>
 								<textarea name="suggestions" rows="10" cols="50">Write your suggestions here</textarea>
 								<p>If you click next the you will be temporarily reserved</p>
                                 <input type ="checkbox" name ="agreement" value ="agree" required>

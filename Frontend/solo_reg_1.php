@@ -47,7 +47,6 @@ session_start();
                     <li><a href="gallery.php">Gallery</a></li>
                     <li class ="active"><a href="reg_1_solo_group.php">Reservation</a></li>
                     <li><a href="reservationStatus.php">Reservation Status</a></li>
-					<li><a href="tenantlogin.php">Log in</a></li>
                 </ul>
             <!-- /.navbar-collapse -->
         </div>
@@ -82,10 +81,10 @@ session_start();
                                         <label>Preference:</label>
                                         <p class="help-block"></p>
                                         <label class="radio-inline">
-                                          <span data-toggle="popover" data-trigger="hover" data-content="Rooms located at the center of the building which excludes having a window." data-placement="top"><input type="radio" name="preference" id="inlineRadio1" value="interior"> Interior</span>
+                                          <input type="radio" name="preference" id="inlineRadio1" value="interior"> Interior
                                         </label>
                                         <label class="radio-inline">
-                                          <span data-toggle="popover" data-trigger="hover" data-content="Rooms located at the side of the building which includes having a window." data-placement="top"><input type="radio" name="preference" id="inlineRadio2" value="windowed"> Windowed</span>
+                                          <input type="radio" name="preference" id="inlineRadio2" value="windowed"> Windowed
                                         </label>
                                     </div>
 								</div>
@@ -185,12 +184,6 @@ session_start();
         }
     }
     </script>
-	<script>
-	$(document).ready(function){
-		$('[data-toggle="popover"]').popover();
-	));
-	}
-	</script>
 </body>
 
 </html>
