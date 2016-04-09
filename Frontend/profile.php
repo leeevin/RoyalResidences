@@ -1,6 +1,10 @@
 <?php
 include('session.php'); 
+if(!isset($_SESSION['login_user'])){
+header("location: tenantLogin.php");
+}
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -16,10 +20,10 @@ include('session.php');
     <title>Royal Residence - Tenant</title>
 
     <!-- Bootstrap Core CSS -->
-    <link href="css2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom CSS -->
-    <link href="css2/css/modern-business.css" rel="stylesheet">
+    <link href="css/modern-business.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
     <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
@@ -49,9 +53,9 @@ include('session.php');
                 <a class="navbar-brand" href="profile.php">Royal Residence</a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
-          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav navbar-right">
-								<li><a href="profile.php">Profile</a></li>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">                                
+								<li class="active"><a href="profile.php">Profile</a></li>
 								<li><a href="contract.php">Contract</a></li>
 								<li><a href="billStatement.php">Billing Statement</a></li>
 								<li><a href="ledger.php">Ledger</a></li>
@@ -66,183 +70,148 @@ include('session.php');
 
     <!-- Page Content -->
     <div class="container">
-	<h2> <?php echo $printFirstname . " " . $printLastname ?></h2>
+<h2><?php echo $printFirstname . " " . $printLastname ?></h2>
 	<hr>
 	
-	 <!-- Image and edit profile button -->
-	<div class="col-lg-3">
-			<img src="css/prof.jpg" id="tenant" alt=""> 
+		<div class="col-lg-3">
+			<div class="panel panel-success">								
+								<div class="panel-body">
+									<img class="img-responsive" src="tenant/tenant.jpg" alt="">
+								</div>
+								<div class="panel-footer">
+									<button type="button" class="btn btn-default">Change Profile Picture</button>
+									<button type="button" class="btn btn-default">Update Phone Number</button>
+								</div>
+            </div>
+		</div>
+		
+			<div class="col-lg-9">
 			
-        <div class="margup">				
-			<button type="button" class="btn btn-default" name = "uploadPic" id = "uploadPic">Change Profile Picture</button>	
-		</div>
-		<div class="margup">
-			<button type="button" class="btn btn-default">Update Phone Number</button>	
-		</div>
-     </div>
-	 <br>
-	  
-	  
-	  <!-- Profile Information -->
-	 <div class="col-lg-8">
+				<div class="page-header">                               
+								<div class="row">
+									<div class="col-lg-12">
 
+										<ul id="myTab" class="nav nav-tabs nav-justified">
+											<li class="active"><a href="#personalInformation" data-toggle="tab" style="color: black" aria-expanded="true">Personal Information</a>
+											</li>
+											<li class=""><a href="#schoolInformation" data-toggle="tab" style="color: black" aria-expanded="false">School Information</a>
+											</li>	
+											<li class=""><a href="#familyInformation" data-toggle="tab" style="color: black" aria-expanded="false"> Family Information</a>
+											</li>											
+										</ul>
 
-	 		<div class ="subtitle">TENANCY CONTRACT DETAILS</div>
-			<table>
-			 <tbody>
-				 <tr>
-				 <td><p class="ptitle">	Contract No:</p></td>
-				 <td><p class="pmargL"><?php echo $printContractNo ?></p></td>
-				 </tr>
-				 <tr>
-				 <td><p class="ptitle"> Expected Move-in date:</p></td>
-				 <td><p class="pmargL"><?php echo $printMoveinDate ?></p></td>
-				 </tr>
-				 <tr>
-				 <td><p class="ptitle"> Termination date:</p></td>
-				 <td><p class="pmargL"><?php echo $printTerminationDate?></p></td>
-				 </tr>
-				 <tr>
-				 <td><p class="ptitle">Room:</p></td>
-				 <td><p class="pmargL"><?php echo $printRoom ?></p></td>
-				 </tr>
-				 <tr>
-				 <td><p class="ptitle">Monthly Rate:</p></td>
-				 <td><p class="pmargL"><?php echo $printMonthlyRate ?></p></td>
-				 </tr>
-			 </tbody>
-			</table>
-			 <form>
-				<div class="margup">				
-					<button type="button" class="btn btn-default" name = "uploadPic" id = "uploadPic">Request Room Change</button>	
-				</div>
-				<div class="margup">
-					<button type="button" class="btn btn-default">Request Contract Extension</button>	
-				</div>
-			</form>
-
-
-
-		<div class ="subtitle">PERSONAL INFORMATION</div>
-			<table>
-			 <tbody>
-				 <tr>
-				 <td><p class="ptitle">Full Name:</p></td>
-				 <td><p class="pmargL"><?php echo $printFirstname . " " . $printLastname ?></p></td>
-				 </tr>
-				 <tr>
-				 <td><p class="ptitle">Gender:</p></td>
-				 <td><p class="pmargL"><?php echo $printGender ?></p></td>
-				 </tr>
-				 <tr>
-				 <td><p class="ptitle">Civil Status:</p></td>
-				 <td><p class="pmargL"><?php echo $printCivil ?></p></td>
-				 </tr>
-				 <tr>
-				 <td><p class="ptitle">Birthday:</p></td>
-				 <td><p class="pmargL"><?php
+										<div id="myTabContent" class="tab-content">
+											<div class="tab-pane fade active in" id="personalInformation">	<br>											
+												<div class="col-lg-12">
+													<div class="col-lg-3"><label for=" ">Full Name:</label></div>
+													<div class="col-lg-3"> <?php echo $printFirstname . " " . $printLastname ?> </div>
+													<div class="col-lg-3"><label for=" ">Gender:</label></div>
+													<div class="col-lg-3">Female</div>
+												</div>
+												<div class="col-lg-12">
+													<div class="col-lg-3"><label for=" ">Civil Status:</label></div>
+													<div class="col-lg-3"><?php echo $printCivil ?></div>
+													<div class="col-lg-3"><label for=" ">Birthdate:</label></div>
+													<div class="col-lg-3"><?php
 				 					$newvalue = date('m-d-y', strtotime($printBirthday)); 
-				 					echo $newvalue ?></p></td>
-				 </tr>
-				 <tr>
-				 <td><p class="ptitle">Religion:</p></td>
-				 <td><p class="pmargL"><?php echo $printReligion ?></p></td>
-				 </tr>
-				 <tr>
-				 <td><p class="ptitle">Provincial Address:</p></td>
-				 <td><p class="pmargL"><?php echo $houseNo . " ".  $street . " " . $barangay . ",". $municipality . "," . $province ?></p></td>
-				 </tr>
-				 <tr>
-				 <td><p class="ptitle">**International Address:</p></td>
-				 <td><p class="pmargL"> <?php echo $printIntAddress ?></p></td>
-				 </tr>
-				 <tr>
-				 <td><p class="ptitle">ID Number:</p></td>
-				 <td><p class="pmargL"><?php echo $printIdNO ?></p></td>
-				 </tr>
-				 <tr>
-				 <td><p class="ptitle">Phone Number:</p></td>
-				 <td><p class="pmargL"><?php echo $printPhoneNo  ?></p></td>
-				 </tr>
-				 <tr>
-				 <td><p class="ptitle">**Referred by:</p></td>
-				 <td><p class="pmargL"><?php echo $printReferredby ?></p></td>
-				 </tr>
-				 
-			 </tbody>
-			</table>
-		<br><div class ="subtitle">SCHOOL INFORMATION</div>
-			<table>
-			  <tbody> 
-				 <tr>
-				 <td><p class="ptitle">Name of School - College:</p></td>
-				 <td><p class="pmargL"><?php echo $printCollege ?></p></td>
-				 </tr>
-				 <tr>
-				 <td><p class="ptitle">Name of Highschool:</p></td>
-				 <td><p class="pmargL"><?php echo $printHighSchool ?></p></td>
-				 </tr>
-				 <tr>
-				 <td><p class="ptitle">School Address (Highschool):</p></td>
-				 <td><p class="pmargL"><?php echo $printSchoolAddress?></p></td>
-				 </tr>
-				 <tr>
-				 <td><p class="ptitle">Telephone Number:</p></td>
-				 <td><p class="pmargL"><?php echo $printTelNo ?></p></td>
-				 </tr>
-				 <tr>
-				 <td><p class="ptitle">Course and Year:</p></td>
-				 <td><p class="pmargL"><?php echo $printCourseAndYear ?></p></td>
-				 </tr>
-				</tbody>
-			</table>
-		<br><div class ="subtitle">FAMILY INFORMATION</div>
-			<table>
-			  <tbody>
-			    <tr>
-				 <td><p class="ptitle">Father:</p></td>
-				 <td><p class="pmargL"><?php echo $printFatherName ?></p></td>
-				 <td><p class="ptitle">Occupation:</p></td>
-				 <td><p class="pmargL"><?php echo $printFatherOcc  ?></p></td>
-				 <td><p class="ptitle">Number:</p></td>
-				 <td><p class="pmargL"><?php echo $printFatherPhone  ?></p></td>
-				</tr>
-				<tr>
-				 <td><p class="ptitle">Mother:</p></td>
-				 <td><p class="pmargL"><?php echo $printMotherName  ?></p></td>
-				 <td><p class="ptitle">Occupation:</p></td>
-				 <td><p class="pmargL"><?php echo $printMotherOcc ?></p></td>
-				 <td><p class="ptitle">Number:</p></td>
-				 <td><p class="pmargL"><?php echo $printMotherPhone ?></p></td>
-				</tr>
-				<tr>
-				 <td><p class="ptitle">**Spouse:</p></td>
-				 <td><p class="pmargL"><?php echo $printSpouseName?></p></td>
-				 <td><p class="ptitle">Occupation:</p></td>
-				 <td><p class="pmargL"><?php echo $printSpouseOcc ?></p></td>
-				 <td><p class="ptitle">Number:</p></td>
-				 <td><p class="pmargL"><?php echo $printSpousePhone ?></p></td>
-				</tr>
-				<tr>
-				 <td><p class="ptitle">Guardian:</p></td>
-				 <td><p class="pmargL"><?php echo $printGuardianName ?></p></td>
-				 <td><p class="ptitle">Occupation:</p></td>
-				 <td><p class="pmargL"><?php echo $printGuardianOcc?></p></td>
-				 <td><p class="ptitle">Number:</p></td>
-				 <td><p class="pmargL"><?php echo $printGuardianPhone ?></p></td>
-				</tr>
-			  </tbody>
-			<table>
-		
-		
-		
-		
-	
-	 </div>
-	</div>
-	<hr>
- </div>
-		<!-- /cont
+				 					echo $newvalue ?></p></div>
+												</div>
+												<div class="col-lg-12">
+													<div class="col-lg-3"><label for=" ">Religion:</label></div>
+													<div class="col-lg-4"><?php echo $printReligion ?></div>
+												</div>
+												<div class="col-lg-12">
+													<div class="col-lg-3"><label for=" ">ID Number:</label></div>
+													<div class="col-lg-3"><?php echo $printIdNO ?></div>
+													<div class="col-lg-3"><label for=" ">Phone Number:</label></div>
+													<div class="col-lg-3"><?php echo $printPhoneNo  ?></div>
+												</div>
+												<div class="col-lg-12">
+													<div class="col-lg-3"><label for=" ">Provincial Address:</label></div>
+													<div class="col-lg-4"><?php echo $houseNo . " ".  $street . " " . $barangay . ",". $municipality . "," . $province ?></div>
+												</div>
+												<div class="col-lg-12">
+													<div class="col-lg-3"><label for=" ">**International Address:</label></div>
+													<div class="col-lg-4"><?php echo $printIntAddress ?></div>
+												</div>
+												<div class="col-lg-12">
+													<div class="col-lg-3"><label for=" ">**Referred by:</label></div>
+													<div class="col-lg-4"><?php echo $printReferredby ?>r</div>
+												</div>
+											</div>
+											
+											<div class="tab-pane fade" id="schoolInformation">
+												<br>
+												<div class="col-lg-12">
+													<div class="col-lg-4"><label for=" ">Name of School - College:</label></div>
+													<div class="col-lg-4"><?php echo $printCollege ?></div>
+												</div>
+												<div class="col-lg-12">
+													<div class="col-lg-4"><label for=" ">Name of Highschool:</label></div>
+													<div class="col-lg-4"><?php echo $printHighSchool ?></div>
+												</div>
+												<div class="col-lg-12">
+													<div class="col-lg-4"><label for=" ">School Address (Highschool):</label></div>
+													<div class="col-lg-4"><?php echo $printSchoolAddress?></div>
+												</div>
+												<div class="col-lg-12">
+													<div class="col-lg-4"><label for=" ">Telephone Number:</label></div>
+													<div class="col-lg-4"><?php echo $printTelNo ?></div>
+												</div>
+												<div class="col-lg-12">
+													<div class="col-lg-4"><label for=" ">Course and Year:</label></div>
+													<div class="col-lg-4"><?php echo $printCourseAndYear ?></div>
+												</div>													
+											</div>
+											
+											<div class="tab-pane fade" id="familyInformation"><br>
+												<div class="col-lg-12">
+													<div class="col-lg-2"><label for=" ">Father:</label></div>
+													<div class="col-lg-3"><?php echo $printFatherName ?></div>
+													<div class="col-lg-2"><label for=" ">Occupation:</label></div>
+													<div class="col-lg-3"><?php echo $printFatherOcc  ?></div>
+													<div class="col-lg-2"><label for=" ">Number:</label></div>
+													<div class="col-lg-3"><?php echo $printFatherPhone  ?></div>
+												</div>
+												<div class="col-lg-12">
+													<div class="col-lg-2"><label for=" ">Mother:</label></div>
+													<div class="col-lg-3"><?php echo $printMotherName  ?></div>
+													<div class="col-lg-2"><label for=" ">Occupation:</label></div>
+													<div class="col-lg-3"><?php echo $printMotherOcc ?></div>
+													<div class="col-lg-2"><label for=" ">Number:</label></div>
+													<div class="col-lg-3"><?php echo $printMotherPhone ?></div>
+												</div>
+												<div class="col-lg-12">
+													<div class="col-lg-2"><label for=" ">**Spouse:</label></div>
+													<div class="col-lg-3"><?php echo $printSpouseName?></p></div>
+													<div class="col-lg-2"><label for=" ">Occupation:</label></div>
+													<div class="col-lg-3"><?php echo $printSpouseOcc ?></div>
+													<div class="col-lg-2"><label for=" ">Number:</label></div>
+													<div class="col-lg-3"><?php echo $printSpousePhone ?></div>
+												</div>
+												<div class="col-lg-12">
+													<div class="col-lg-2"><label for=" ">Guardian:</label></div>
+													<div class="col-lg-3"></div>
+													<div class="col-lg-2"><label for=" ">Occupation:</label></div>
+													<div class="col-lg-3"><?php echo $printGuardianName ?></div>
+													<div class="col-lg-2"><label for=" ">Number:</label></div>
+													<div class="col-lg-3"><?php echo $printGuardianPhone ?></div>
+												</div>
+											</div>
+								            
+										</div>
+									</div>
+									
+								</div>
+				</div>
+							<div>
+										<form method = "post" action = 'request.php'>
+				<input type="submit" class="btn btn-default" name="btn_submit" value="Extend Contract" />
+				<input type="submit" class="btn btn-default" name="btn_submit" value="Change room" />
+				
+			</form>
+			</div>
+			</div>
     
        
 	   

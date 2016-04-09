@@ -1,3 +1,11 @@
+<?php
+include('session.php'); 
+if(!isset($_SESSION['login_user'])){
+header("location: tenantLogin.php");
+}
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 

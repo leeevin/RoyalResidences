@@ -24,7 +24,7 @@ if (isset($_POST['submit'])) {
         if ($rows == 1) {
             $_SESSION['login_user'] = $username;
 
-            header("location: home.php");
+            header("location: profile.php");
         } else {
             $error = "Username or Password is incorrect";
         }
